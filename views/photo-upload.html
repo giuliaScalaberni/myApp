@@ -4,9 +4,26 @@
     <h1>New Photo</h1>
     <h2>Direct upload from the browser with Angular File Upload</h2>
     <form>
-        
+
         <div class="form_line">
             <label>Image:</label>
+
+                                  <!--SNAPPING -->
+            <div class="row marketing">
+
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4" center>
+                          <h1>PhotoSpeed</h1>
+                          <div id="deviceready" >
+                              <video id="video" width="400" height="400" autoplay></video>
+                              <!--button class="btn btn-warning"id="snap">Snap Photo</button-->
+                              <canvas id="canvas" width="640" height="480"></canvas>
+                          </div>
+                          </div>
+                            <div class="col-md-4"></div>
+
+                    </div>
+                      <!--SNAPPING -->
             <div class="form_controls">
                 <div class="upload_button_holder">
                     <button  class="btn btn-danger" ngf-select="uploadFile($file)" multiple title="upload" resetOnClick="true" >Upload</button>

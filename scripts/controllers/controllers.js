@@ -35,6 +35,21 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
           });
         };
     };
+
+     angular.element(document).ready(function () {
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        });
+    }
+  });
     //});
 
     /* Modify the look and fill of the dropzone when files are being dragged over it */

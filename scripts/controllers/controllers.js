@@ -8,32 +8,40 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
   /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
     var d = new Date();
-    $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
+    $scope.title = "Image_" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
     //$scope.$watch('files', function() {
-    $scope.uploadFile = function(file){
-      $scope.file = file;
-      if (!$scope.file) return;
-        if (file &&!file.$error) {
-          file.upload = $upload.upload({
+
+
+    $scope.uploadFile = function(){
+      var video = document.getElementById('video');
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, 640, 480);
+       canvas.toBlob(function(blob) {
+           var x=saveAs(blob, $scope.title);
+           alert(x);
+        if (x &&!x.$error) {
+          x.upload = $upload.upload({
             url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
             data: {
               upload_preset: cloudinary.config().upload_preset,
               tags: 'myphotoalbum',
               context: 'photo=' + $scope.title,
-              file: file
+              file: x
             }
           }).progress(function (e) {
-            file.progress = Math.round((e.loaded * 100.0) / e.total);
-            file.status = "Uploading... " + file.progress + "%";
+            x.progress = Math.round((e.loaded * 100.0) / e.total);
+            x.status = "Uploading... " + x.progress + "%";
           }).success(function (data, status, headers, config) {
             $rootScope.photos = $rootScope.photos || [];
             data.context = {custom: {photo: $scope.title}};
-            file.result = data;
+            x.result = data;
             $rootScope.photos.push(data);
           }).error(function (data, status, headers, config) {
-            file.result = data;
+            x.result = data;
           });
         };
+         });
     };
 
      angular.element(document).ready(function () {

@@ -26,7 +26,8 @@
 
 
      .when('/photos', {
-       templateUrl: 'views/photo-list.html',
+       templateUrl: 'views/photo-upload.html',
+       controller: 'photoUploadCtrl',
        resolve: {
          photoList: function ($q, $rootScope, album) {
            if (!$rootScope.serviceCalled) {

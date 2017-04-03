@@ -1,11 +1,8 @@
 <div id="direct_upload"
-    ngf-drop="uploadFiles($files)"
-    ngf-drag-over-class="dragOverClass($event)"
     ng-model="files"
     ng-multiple="true">
     <h1>New Photo</h1>
     <h2>Direct upload from the browser with Angular File Upload</h2>
-    <p>You can also drag and drop an image file into the dashed area.</p>
     <form>
         <div class="form_line">
             <label path="title">Title:</label>
@@ -17,14 +14,14 @@
             <label>Image:</label>
             <div class="form_controls">
                 <div class="upload_button_holder">
-                    <button  class="btn btn-danger" ngf-select="uploadFiles($files)" multiple title="upload" resetOnClick="true" >Upload</button>
+                    <button  class="btn btn-danger" ngf-select="uploadFile($file)" multiple title="upload" resetOnClick="true" >Upload</button>
                 </div>
 
             </div>
         </div>
     </form>
     <h2>Status</h2>
-    <div class="file" ng-repeat="file in files">
+    <!--div class="file" ng-repeat="file in files"-->
         <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>
         <div class="status">{{file.status}}</div>
         <div class="progress-bar">
@@ -44,7 +41,7 @@
             </tr>
           </table>
         </div>
-    </div>
+    <!--/div-->
 
 </div>
 

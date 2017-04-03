@@ -10,11 +10,10 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
     var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     //$scope.$watch('files', function() {
-    $scope.uploadFiles = function(files){
-      $scope.files = files;
-      if (!$scope.files) return;
-      angular.forEach(files, function(file){
-        if (file && !file.$error) {
+    $scope.uploadFile = function(file){
+      $scope.file = file;
+      if (!$scope.file) return;
+        if (file &&!file.$error) {
           file.upload = $upload.upload({
             url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
             data: {
@@ -34,13 +33,12 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
           }).error(function (data, status, headers, config) {
             file.result = data;
           });
-        }
-      });
+        };
     };
     //});
 
     /* Modify the look and fill of the dropzone when files are being dragged over it */
-    $scope.dragOverClass = function($event) {
+    /*$scope.dragOverClass = function($event) {
       var items = $event.dataTransfer.items;
       var hasFile = false;
       if (items != null) {
@@ -54,5 +52,5 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
         hasFile = true;
       }
       return hasFile ? "dragover" : "dragover-err";
-    };
+    };*/
   }]);

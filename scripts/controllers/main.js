@@ -10,6 +10,13 @@
 angular.module('documentsApp')
   .controller('MainCtrl', function () {
 
+    $(function() {
+      if($.fn.cloudinary_fileupload !== undefined) {
+        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+      }
+    });
+    /**$(#deviceready).append($.cloudinary.unsigned_upload_tag("giulia_unsigned",
+  { cloud_name: 'giulia' }));*/
 
 
        // Application Constructor
@@ -20,7 +27,7 @@ angular.module('documentsApp')
        // Bind any cordova events here. Common events are:
        // 'pause', 'resume', etc.
        angular.element(document).ready(function () {
-
+        
      //Grab elements, create settings, etc.
    var video = document.getElementById('video');
    var canvas = document.getElementById('canvas');
@@ -38,19 +45,22 @@ angular.module('documentsApp')
    document.getElementById("snap").addEventListener("click", function() {
 
    	context.drawImage(video, 0, 0, 640, 480);
-     canvas.toBlob(function(blob) {
-       var x=saveAs(blob, "image.jpg");
 
 
-       var data = canvas.toDataURL("image/octet-stream");
+   canvas.toBlob(function(blob) {
+       var x=saveAs(blob, "image.png");
+       var data = canvas.toDataURL("image/png");
 
 
        //var mybinarydata = binEncode(data);
-       alert(data);
+       alert(context.getImageData(0, 0, 640, 480).data);
        window.location.href = data;
 
 
+
+
      });
+
      //window.open(canvas.toDataURL("image/jpg"));
    });
 

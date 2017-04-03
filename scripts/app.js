@@ -16,7 +16,6 @@
    'ngSanitize',
    'ngTouch',
    'cloudinary',
-   'photoAlbumAnimations',
    'photoAlbumControllers',
    'photoAlbumServices'
  ]);

@@ -72,6 +72,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -83,10 +84,21 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/cloudinary-core/cloudinary-core.js"></script>
+    <!-- angular file upload -->
+    <script src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
+    <!-- angular dependencies -->
+    <script src="bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
+    <!-- angular file upload -->
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <!-- application code -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-
+        <script src="scripts/controllers/config.js"></script>
+        <script src="scripts/controllers/controllers.js"></script>
+        <script src="scripts/controllers/services.js"></script>
         <script src="scripts/controllers/fileSaver.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>

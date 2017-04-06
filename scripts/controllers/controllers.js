@@ -16,9 +16,13 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       var video = document.getElementById('video');
       var canvas = document.getElementById('canvas');
       var context = canvas.getContext('2d');
-        context.drawImage(video, 0, 0, 640, 480);
-       canvas.toBlob(function(blob) {
-           var x=saveAs(blob, $scope.title);
+      var x=  context.drawImage(video, 0, 0, 640, 480);
+
+
+           //var x= canvas.toDataURL("image/png");
+
+               //var x=saveAs(blob, $scope.title);
+               //var x = canvas.toDataURL("image/png");
            alert(x);
         if (x &&!x.$error) {
           x.upload = $upload.upload({
@@ -41,7 +45,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
             x.result = data;
           });
         };
-         });
+
     };
 
      angular.element(document).ready(function () {

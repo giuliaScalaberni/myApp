@@ -27,7 +27,7 @@ angular.module('documentsApp')
        // Bind any cordova events here. Common events are:
        // 'pause', 'resume', etc.
        angular.element(document).ready(function () {
-        
+
      //Grab elements, create settings, etc.
    var video = document.getElementById('video');
    var canvas = document.getElementById('canvas');
@@ -49,10 +49,10 @@ angular.module('documentsApp')
 
    canvas.toBlob(function(blob) {
        var x=saveAs(blob, "image.png");
-       var data = canvas.toDataURL("image/png");
+      // var data = canvas.toDataURL("image/png");
 
 
-       //var mybinarydata = binEncode(data);
+
        alert(context.getImageData(0, 0, 640, 480).data);
        window.location.href = data;
 

@@ -16,14 +16,12 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       var video = document.getElementById('video');
       var canvas = document.getElementById('canvas');
       var context = canvas.getContext('2d');
-      var x=  context.drawImage(video, 0, 0, 640, 480);
+      context.drawImage(video, 0, 0, 640, 480);
+      canvas.toBlob(function(blob) {
 
+               var x=saveAs(blob, $scope.title);
 
-           //var x= canvas.toDataURL("image/png");
-
-               //var x=saveAs(blob, $scope.title);
-               //var x = canvas.toDataURL("image/png");
-           alert(x);
+          alert(x);
         if (x &&!x.$error) {
           x.upload = $upload.upload({
             url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
@@ -46,7 +44,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
           });
         };
 
-    };
+   });};
 
      angular.element(document).ready(function () {
     var video = document.getElementById('video');

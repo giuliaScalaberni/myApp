@@ -28,7 +28,7 @@
      .when('/photos', {
        templateUrl: 'views/photo-upload.html',
        controller: 'photoUploadCtrl',
-       resolve: {
+       /*resolve: {
          photoList: function ($q, $rootScope, album) {
            if (!$rootScope.serviceCalled) {
              return album.photos({}, function (v) {
@@ -39,7 +39,7 @@
              return $q.when(true);
            }
          }
-       }
+       }*/
      }).when('/', {
        templateUrl: 'views/main.html',
        controller: 'MainCtrl',

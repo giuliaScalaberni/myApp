@@ -3,37 +3,25 @@
     ng-multiple="true">
     <h1>New Photo</h1>
     <h2>Direct upload from the browser with Angular File Upload</h2>
-    <form>
-      <webcam></webcam>
+        <label>Image:</label>
+      <webcam channel="channel"
+        on-streaming="onSuccess()"
+        on-error="onError(err)"
+        on-stream="onStream(stream)" id="snap"> </webcam>
 
 
-        <div class="form_line">
-            <label>Image:</label>
 
-                                  <!--SNAPPING -->
-            <div class="row marketing">
 
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4" center>
-                          <h1>PhotoSpeed</h1>
-                          <div id="deviceready" >
-                              <video id="video" width="400" height="400" autoplay></video>
-                              <!--button class="btn btn-warning"id="snap">Snap Photo</button-->
-                              <canvas id="canvas" width="640" height="480"></canvas>
-                          </div>
-                          </div>
-                            <div class="col-md-4"></div>
-
-                    </div>
                       <!--SNAPPING -->
             <div class="form_controls">
                 <div class="upload_button_holder">
-                    <button  class="btn btn-danger" ng-click="uploadFile()" multiple title="upload" resetOnClick="true" >Upload</button>
+                    <button  class="btn btn-danger" ng-click="makeSnapshot()" multiple title="upload" resetOnClick="true" >Upload</button>
+
+                        <canvas id="snapshot" width="300" height="300"></canvas>
                   </div>
 
             </div>
-        </div>
-    </form>
+
     <h2>Status</h2>
     <!--div class="file" ng-repeat="file in files"-->
         <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>

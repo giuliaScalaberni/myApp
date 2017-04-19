@@ -17,7 +17,8 @@
    'ngTouch',
    'cloudinary',
    'photoAlbumControllers',
-   'photoAlbumServices'
+   'photoAlbumServices',
+    'webcam'
  ]);
 
  documentsApp.config(['$routeProvider',
@@ -28,7 +29,7 @@
      .when('/photos', {
        templateUrl: 'views/photo-upload.html',
        controller: 'photoUploadCtrl',
-       
+
      }).when('/', {
        templateUrl: 'views/main.html',
        controller: 'MainCtrl',

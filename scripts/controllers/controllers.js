@@ -66,7 +66,6 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
             ctxPat.putImageData(idata, 0, 0);
 
             //sendSnapshotToServer(patCanvas.toDataURL());
-alert(idata);
             patData = idata;
 
                 //$scope.uploadFile = function(){
@@ -75,31 +74,34 @@ alert(idata);
                   var context = canvas.getContext('2d');
                   context.drawImage(video, 0, 0, 640, 480);
                   var x = canvas.toDataURL('image/png');
-
-
                       alert(x);*/
                       if (patData!=''){
-                      var x= idata.data;
+
+
+                      var x= idata['data'];
                        alert(x);
-                               if (x &&!x.$error) {
-                      x.upload = $upload.upload({
+
+                         var f = new File([x], $scope.title);
+
+                               if (f &&!f.$error) {
+                      f.upload = $upload.upload({
                         url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
                         data: {
                           upload_preset: cloudinary.config().upload_preset,
                           tags: 'myphotoalbum',
                           context: 'photo=' + $scope.title,
-                          file: x
+                          file: f
                         }
                       }).progress(function (e) {
-                        x.progress = Math.round((e.loaded * 100.0) / e.total);
-                        x.status = "Uploading... " + x.progress + "%";
+                        f.progress = Math.round((e.loaded * 100.0) / e.total);
+                        f.status = "Uploading... " + f.progress + "%";
                       }).success(function (data, status, headers, config) {
                         $rootScope.photos = $rootScope.photos || [];
                         data.context = {custom: {photo: $scope.title}};
-                        x.result = data;
+                        f.result = data;
                         $rootScope.photos.push(data);
                       }).error(function (data, status, headers, config) {
-                        x.result = data;
+                        f.result = data;
                       });
                     };
 

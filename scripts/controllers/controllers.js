@@ -42,7 +42,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
    $scope.onStream = function (stream) {
        // You could do something manually with the stream.
    };
-    $scope.title = "Image_" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    $scope.title = "Image_" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()+".jpg";
     //$scope.$watch('files', function() {
     var _video = null,
             patData = null;
@@ -77,11 +77,15 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                       alert(x);*/
                       if (patData!=''){
 
+                          var f = new Image();
+                          f.src = patCanvas.toDataURL();
 
-                      var x= idata['data'];
-                       alert(x);
+                         //var f = new File([patCanvas], $scope.title,{type:"image/jpeg"});
+                         alert(f);
 
-                         var f = new File([x], $scope.title);
+
+
+                         $scope.f=f;
 
                                if (f &&!f.$error) {
                       f.upload = $upload.upload({
@@ -90,7 +94,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                           upload_preset: cloudinary.config().upload_preset,
                           tags: 'myphotoalbum',
                           context: 'photo=' + $scope.title,
-                          file: f
+                          file: f.src
                         }
                       }).progress(function (e) {
                         f.progress = Math.round((e.loaded * 100.0) / e.total);

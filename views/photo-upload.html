@@ -1,5 +1,5 @@
 <div id="direct_upload"
-    ng-model="file"
+    ng-model="files"
     ng-multiple="true">
 
     <h1>New Photo</h1>
@@ -17,7 +17,7 @@
                       <!--SNAPPING -->
             <div class="form_controls">
                 <div class="upload_button_holder">
-                    <button  class="btn btn-danger" ng-model="file" ng-click="makeSnapshot()" multiple title="upload" resetOnClick="true" >Upload</button>
+                    <button  class="btn btn-danger" ng-model="files" ng-click="makeSnapshot()" multiple title="upload" resetOnClick="true" >Upload</button>
 
                         <canvas id="snapshot" width="300" height="300"></canvas>
                   </div>
@@ -25,7 +25,7 @@
             </div>
 
     <h2>Status</h2>
-    <!--div class="file" ng-repeat="file in files"-->
+    <div class="file" ng-repeat="file in files">
         <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>
         <div class="status">{{file.status}}</div>
         <div class="progress-bar">

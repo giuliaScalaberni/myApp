@@ -80,9 +80,6 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                           var f = new Image();
                           f.src = patCanvas.toDataURL();
 
-                         //var f = new File([patCanvas], $scope.title,{type:"image/jpeg"});
-                         alert(f);
-
 
 
                          $scope.f=f;
@@ -99,15 +96,19 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                       }).progress(function (e) {
                         f.progress = Math.round((e.loaded * 100.0) / e.total);
                         f.status = "Uploading... " + f.progress + "%";
+
                       }).success(function (data, status, headers, config) {
                         $rootScope.photos = $rootScope.photos || [];
                         data.context = {custom: {photo: $scope.title}};
                         f.result = data;
                         $rootScope.photos.push(data);
+                        $scope.dati=data;
+                        alert($scope.dati);
                       }).error(function (data, status, headers, config) {
                         f.result = data;
                       });
                     };
+
 
 
           //   };

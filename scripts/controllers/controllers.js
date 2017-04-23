@@ -102,8 +102,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                         data.context = {custom: {photo: $scope.title}};
                         f.result = data;
                         $rootScope.photos.push(data);
-                        $scope.dati=data;
-                        alert($scope.dati);
+                        //$scope.dati=data;
                       }).error(function (data, status, headers, config) {
                         f.result = data;
                       });

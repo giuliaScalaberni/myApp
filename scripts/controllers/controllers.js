@@ -35,23 +35,16 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
        $scope.$apply(function() {
            $scope.patOpts.w = _video.width;
            $scope.patOpts.h = _video.height;
-           //$scope.showDemos = true;
        });
    };
 
    $scope.onStream = function (stream) {
-       // You could do something manually with the stream.
    };
     $scope.title = "Image_" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()+".jpg";
-    //$scope.$watch('files', function() {
     var _video = null,
             patData = null;
 
         $scope.patOpts = {x: 0, y: 0, w: 25, h: 25};
-
-        // Setup a channel to receive a video property
-        // with a reference to the video element
-        // See the HTML binding in main.html
         $scope.channel = {};
         $scope.makeSnapshot = function() {
         if (_video) {
@@ -65,16 +58,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
             var idata = getVideoData($scope.patOpts.x, $scope.patOpts.y, $scope.patOpts.w, $scope.patOpts.h);
             ctxPat.putImageData(idata, 0, 0);
 
-            //sendSnapshotToServer(patCanvas.toDataURL());
             patData = idata;
-
-                //$scope.uploadFile = function(){
-                /*  var video = document.getElementById('video');
-                  var canvas = document.getElementById('canvas');
-                  var context = canvas.getContext('2d');
-                  context.drawImage(video, 0, 0, 640, 480);
-                  var x = canvas.toDataURL('image/png');
-                      alert(x);*/
                       if (patData!=''){
 
                           var f = new Image();
@@ -110,25 +94,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
 
 
 
-          //   };
         }
       }
     };
 
-
-
-  /*   angular.element(document).ready(function () {
-    var video = document.getElementById('video');
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
-
-    // Get access to the camera!
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        // Not adding `{ audio: true }` since we only want video now
-        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
-        });
-    }
-  });*/
   }]);

@@ -20,23 +20,7 @@
    'photoAlbumServices',
     'webcam'
  ]);
-
- documentsApp.factory('photoUrl', function() {
- var savedData = {}
- function set(data) {
-   savedData = data;
- }
- function get() {
-  return savedData;
- }
-
- return {
-  set: set,
-  get: get
- }
-
-});
-
+ 
  documentsApp.config(['$routeProvider',
    function ($routeProvider) {
      $routeProvider

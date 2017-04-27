@@ -9,9 +9,10 @@
  */
 angular.module('documentsApp')
 
-  .controller('AboutCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary', 'photoUrl',
+  .controller('AboutCtrl', ['$scope','$rootScope', 
 
     function() {
 
+      alert($rootScope.url);
 
     }]);

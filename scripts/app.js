@@ -21,6 +21,22 @@
     'webcam'
  ]);
 
+ documentsApp.factory('photoUrl', function() {
+ var savedData = {}
+ function set(data) {
+   savedData = data;
+ }
+ function get() {
+  return savedData;
+ }
+
+ return {
+  set: set,
+  get: get
+ }
+
+});
+
  documentsApp.config(['$routeProvider',
    function ($routeProvider) {
      $routeProvider
@@ -43,34 +59,3 @@
        redirectTo: '/'
      });
    }]);
-
-
-/*angular
-  .module('documentsApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'cloudinary',
-    'photoAlbumAnimations',
-    'photoAlbumControllers',
-    'photoAlbumServices'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });*/

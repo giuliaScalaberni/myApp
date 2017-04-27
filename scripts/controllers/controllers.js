@@ -4,7 +4,7 @@
 
 var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUpload']);
 
-photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
+photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary', 'photoUrl',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
     var getVideoData = function getVideoData(x, y, w, h) {

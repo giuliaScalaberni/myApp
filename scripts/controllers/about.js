@@ -8,10 +8,10 @@
  * Controller of the documentsApp
  */
 angular.module('documentsApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+
+  .controller('AboutCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary', 'photoUrl',
+
+    function() {
+
+
+    }]);

@@ -7,12 +7,8 @@
  * # AboutCtrl
  * Controller of the documentsApp
  */
-angular.module('documentsApp')
 
-  .controller('AboutCtrl', ['$scope','$rootScope', 
-
-    function() {
-
-      alert($rootScope.url);
-
-    }]);
+    var cognitiveController = angular.module('cognitiveController', []);
+cognitiveController.controller('AboutCtrl', function($rootScope) {
+  alert($rootScope.url);
+});

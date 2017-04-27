@@ -18,9 +18,9 @@
    'cloudinary',
    'photoAlbumControllers',
    'photoAlbumServices',
+   'cognitiveController',
     'webcam'
  ]);
- 
  documentsApp.config(['$routeProvider',
    function ($routeProvider) {
      $routeProvider

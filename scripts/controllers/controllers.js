@@ -85,8 +85,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                         $rootScope.photos = $rootScope.photos || [];
                         data.context = {custom: {photo: $scope.title}};
                         f.result = data;
-                        $rootScope.photos.push(data);
-                        $rootScope.url="xxxx";
+                        //$rootScope.photos.push(data);
+                        $rootScope.url=data.url;
                         //photoUrl.set(data);
                          $location.path('/about');
                       }).error(function (data, status, headers, config) {

@@ -23,7 +23,7 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http) {
         url : "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
         headers: {
           'Content-Type': 'application/json',
-          'Ocp-Apim-Subscription-Key':'66dfd0519d9144d798e72d8fb4ce03e1'
+          'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
         },
          data: obj
     }).then(function mySucces(response) {

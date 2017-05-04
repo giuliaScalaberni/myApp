@@ -1,1 +1,6 @@
-<p >{{myWelcome}}</p>
+<p >Last inserted persisted face ID: {{myWelcome}}</p>
+<!-- fai vedere lista delle face per ogni persona. metti combo per scelta-->
+<button type="button" class="btn btn-success" ng-click="getFaces()">Get all faces</button>
+
+<!--a type="button" class="btn btn-info" ng-href="#/add">Retry</a-->
+<p ng-repeat="x in faces">{{x}}</p>

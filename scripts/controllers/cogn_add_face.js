@@ -10,15 +10,13 @@
 
     var cognAddFileController = angular.module('cognAddFileController', []);
 cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, $http) {
-  alert($rootScope.url);
+
   var params = {
       // Request parameters
       "personGroupId": "050498",
       "personId": "bf0d6b4a-c928-487e-91cb-efab9abf0435",
       "userData": "photoXXX",
   };
-//westus.api.cognitive.microsoft.com/face/v1.0/persongroups/{personGroupId}/persons/{personId}/persistedFaces[?userData][&targetFace]
-//"https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params)
   var obj='{"url":"'+$rootScope.url+'"}';
   $http({
         method : "POST",
@@ -29,9 +27,10 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
         },
          data: obj
     }).then(function mySucces(response) {
-        alert($scope.myWelcome = response.data);
+      $scope.myWelcome = response.data.persistedFaceId;
+        alert("persisted ID of last upload: "+$scope.myWelcome);
     }, function myError(response) {
-        $scope.myWelcome = response.statusText;
+        alert($scope.myWelcome = response.data.error.code+": "+response.data.error.message);
     });
 
 /*  $.ajax({

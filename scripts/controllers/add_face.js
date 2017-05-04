@@ -42,7 +42,7 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
    };
     $scope.title = "Image_" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()+".jpg";
     var _video = null,
-            patData = null;
+    patData = null;
 
         $scope.patOpts = {x: 0, y: 0, w: 25, h: 25};
         $scope.channel = {};
@@ -66,16 +66,42 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                           f.src = patCanvas.toDataURL();
 
 
-
+                        if (f &&!f.$error) {
                          $scope.f=f;
-                         $('#modalUpload').modal('show'); 
+                         $('#modalUpload').modal('show');
+                       }
 
                     }
-
-
-
-
       }
+    };
+    $scope.uploadSnapshot=function(){
+         $('#modalUpload').modal('hide');
+                            $scope.f.upload = $upload.upload({
+                              url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
+                              data: {
+                                upload_preset: cloudinary.config().upload_preset,
+                                tags: 'myphotoalbum',
+                                context: 'photo=' + $scope.title,
+                                file: $scope.f.src
+                              }
+                            }).progress(function (e) {
+                              $scope.f.progress = Math.round((e.loaded * 100.0) / e.total);
+                              $scope.f.status = "Uploading... " + $scope.f.progress + "%";
+
+                            }).success(function (data, status, headers, config) {
+                              $rootScope.photos = $rootScope.photos || [];
+                              data.context = {custom: {photo: $scope.title}};
+                              $scope.f.result = data;
+                              //$rootScope.photos.push(data);
+                              $rootScope.url=data.url;
+                              //photoUrl.set(data);
+                               $location.path('/about');
+                            }).error(function (data, status, headers, config) {
+                              $scope.f.result = data;
+                              alert($scope.f.result);
+                            });
+
+
     };
 
   }]);

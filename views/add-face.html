@@ -1,0 +1,72 @@
+<div id="direct_upload"
+    ng-model="f"
+    ng-multiple="true">
+
+    <h1>New Photo</h1>
+    <h2>Direct upload from the browser with Angular File Upload</h2>
+        <label>Image:</label>
+
+      <webcam channel="channel"
+        on-streaming="onSuccess()"
+        on-error="onError(err)"
+        on-stream="onStream(stream)" id="snap"> </webcam>
+
+
+
+
+                      <!--SNAPPING -->
+            <div class="form_controls">
+                <div class="upload_button_holder">
+                    <button  class="btn btn-success" ng-model="files"  ng-click="makeSnapshot()"   multiple title="upload" resetOnClick="true" >Snap</button>
+
+                        <canvas id="snapshot" width="300" height="300"></canvas>
+                  </div>
+
+            </div>
+
+    <h2>Status</h2>
+    <div class="file" >
+        <h3>{{f.name}} {{f.$error}} {{f.$errorParam}}</h3>
+        <div class="status">{{f.status}}</div>
+        <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar"  aria-valuemin="0" aria-valuemax="100" ng-style="{'width': f.progress+'%'}"  ></div>
+  </div>
+        <div class="form_line">
+            <div class="form_controls">
+                <div class="preview">
+                    <img ngf-src="f.result.url || f">
+                </div>
+            </div>
+        </div>
+        <div class="info">
+          <table>
+            <tr ng-repeat="(key, value) in f.result">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="modalUpload" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Snapshot</h4>
+      </div>
+      <div class="modal-body">
+        <p>Sure to upload?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+        <button type="button" class="btn btn-primary">Upload</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+</div>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/config.js"></script>
+<script src="scripts/controllers/add_face.js"></script>
+<script src="scripts/controllers/services.js"></script>

@@ -20,6 +20,7 @@
    'photoAlbumServices',
    'addFaceController',
    'cognitiveController',
+   'cognAddFileController',
     'webcam'
  ]);
  documentsApp.config(['$routeProvider',
@@ -30,7 +31,11 @@
        controller: 'addFaceCtrl',
 
      })
+     .when('/uploadAdd', {
+       templateUrl: 'views/photo-add-result.html',
+       controller: 'cognAddFileCtrl',
 
+     })
      .when('/photos', {
        templateUrl: 'views/photo-upload.html',
        controller: 'photoUploadCtrl',

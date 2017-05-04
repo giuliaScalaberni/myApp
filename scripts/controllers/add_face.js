@@ -95,7 +95,7 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                               //$rootScope.photos.push(data);
                               $rootScope.url=data.url;
                               //photoUrl.set(data);
-                               $location.path('/about');
+                               $location.path('/uploadAdd');
                             }).error(function (data, status, headers, config) {
                               $scope.f.result = data;
                               alert($scope.f.result);

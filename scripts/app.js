@@ -18,13 +18,18 @@
    'cloudinary',
    'photoAlbumControllers',
    'photoAlbumServices',
+   'addFaceController',
    'cognitiveController',
     'webcam'
  ]);
  documentsApp.config(['$routeProvider',
    function ($routeProvider) {
      $routeProvider
+     .when('/add', {
+       templateUrl: 'views/add-face.html',
+       controller: 'addFaceCtrl',
 
+     })
 
      .when('/photos', {
        templateUrl: 'views/photo-upload.html',

@@ -28,7 +28,6 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
          data: obj
     }).then(function mySucces(response) {
       $scope.myWelcome = response.data.persistedFaceId;
-        alert("persisted ID of last upload: "+$scope.myWelcome);
     }, function myError(response) {
         alert($scope.myWelcome = response.data.error.code+": "+response.data.error.message);
     });
@@ -49,7 +48,6 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
             // data: obj
         }).then(function mySucces(response) {
           $scope.faces = response.data;
-            alert($scope.faces);
         }, function myError(response) {
             alert("ERRORE");
         });

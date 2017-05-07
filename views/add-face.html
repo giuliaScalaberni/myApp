@@ -2,9 +2,8 @@
     ng-model="f"
     ng-multiple="true">
 
-    <h1>New Photo</h1>
-    <h2>Direct upload from the browser with Angular File Upload</h2>
-        <label>Image:</label>
+    <h1>Add Person Face (Giulia)</h1>
+
 
       <webcam channel="channel"
         on-streaming="onSuccess()"
@@ -19,7 +18,7 @@
                 <div class="upload_button_holder">
                     <button  class="btn btn-success" ng-model="files"  ng-click="makeSnapshot()"   multiple title="upload" resetOnClick="true" >Snap</button>
 
-                        <canvas id="snapshot" width="300" height="300"></canvas>
+                        <!--canvas id="snapshot" width="300" height="300"></canvas-->
                   </div>
 
             </div>
@@ -54,6 +53,7 @@
       </div>
       <div class="modal-body">
         <p>Sure to upload?</p>
+        <canvas id="snapshot" width="300" height="300"></canvas>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>

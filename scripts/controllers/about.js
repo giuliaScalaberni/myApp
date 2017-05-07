@@ -10,12 +10,10 @@
 
     var cognitiveController = angular.module('cognitiveController', []);
 cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http) {
-  alert($rootScope.url);
   var params = {
       // Request parameters
       "returnFaceId": "true",
-      "returnFaceLandmarks": "false",
-      "returnFaceAttributes": "glasses",
+      "returnFaceLandmarks": "false"
   };
   var obj='{"url":"'+$rootScope.url+'"}';
   $http({
@@ -27,10 +25,33 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http) {
         },
          data: obj
     }).then(function mySucces(response) {
-        alert($scope.myWelcome = response.data);
+
+    alert(response.data[0].faceId);
+    var id=response.data[0].faceId;
+
+    var obj = '{ "faceId": "'+id+'","personId": "bf0d6b4a-c928-487e-91cb-efab9abf0435","personGroupId": "050498"}';
+
+    //var obj='{"url":"'+$rootScope.url+'"}';
+    $http({
+          method : "POST",
+          url : "https://westus.api.cognitive.microsoft.com/face/v1.0/verify",
+          headers: {
+            'Content-Type': 'application/json',
+            'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+          },
+          data: obj
+          // data: obj
+      }).then(function mySucces(result) {
+        alert($scope.myWelcome = result.data["isIdentical"]);
+      }, function myError(response) {
+          alert($scope.myWelcome = result.data.error.code+": "+result.data.error.message);
+      });
+
+
     }, function myError(response) {
         $scope.myWelcome = response.statusText;
     });
+
 
 /*  $.ajax({
       url: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),

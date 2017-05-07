@@ -2,9 +2,9 @@
 
 /* Controllers */
 
-var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUpload']);
+var addFaceController = angular.module('addFaceController', ['ngFileUpload']);
 
-photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
+addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
     var getVideoData = function getVideoData(x, y, w, h) {
@@ -42,11 +42,12 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
    };
     $scope.title = "Image_" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()+".jpg";
     var _video = null,
-            patData = null;
+    patData = null;
 
         $scope.patOpts = {x: 0, y: 0, w: 25, h: 25};
         $scope.channel = {};
         $scope.makeSnapshot = function() {
+
         if (_video) {
             var patCanvas = document.querySelector('#snapshot');
             if (!patCanvas) return;
@@ -65,40 +66,42 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                           f.src = patCanvas.toDataURL();
 
 
-
+                        if (f &&!f.$error) {
                          $scope.f=f;
+                         $('#modalUpload').modal('show');
+                       }
 
-                               if (f &&!f.$error) {
-                      f.upload = $upload.upload({
-                        url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
-                        data: {
-                          upload_preset: cloudinary.config().upload_preset,
-                          tags: 'myphotoalbum',
-                          context: 'photo=' + $scope.title,
-                          file: f.src
-                        }
-                      }).progress(function (e) {
-                        f.progress = Math.round((e.loaded * 100.0) / e.total);
-                        f.status = "Uploading... " + f.progress + "%";
-
-                      }).success(function (data, status, headers, config) {
-                        $rootScope.photos = $rootScope.photos || [];
-                        data.context = {custom: {photo: $scope.title}};
-                        f.result = data;
-                        //$rootScope.photos.push(data);
-                        $rootScope.url=data.url;
-                        //photoUrl.set(data);
-                         $location.path('/about');
-                      }).error(function (data, status, headers, config) {
-                        f.result = data;
-                        alert(f.result);
-                      });
-                    };
-
-
-
-        }
+                    }
       }
+    };
+    $scope.uploadSnapshot=function(){
+         $('#modalUpload').modal('hide');
+                            $scope.f.upload = $upload.upload({
+                              url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
+                              data: {
+                                upload_preset: cloudinary.config().upload_preset,
+                                tags: 'myphotoalbum',
+                                context: 'photo=' + $scope.title,
+                                file: $scope.f.src
+                              }
+                            }).progress(function (e) {
+                              $scope.f.progress = Math.round((e.loaded * 100.0) / e.total);
+                              $scope.f.status = "Uploading... " + $scope.f.progress + "%";
+
+                            }).success(function (data, status, headers, config) {
+                              $rootScope.photos = $rootScope.photos || [];
+                              data.context = {custom: {photo: $scope.title}};
+                              $scope.f.result = data;
+                              //$rootScope.photos.push(data);
+                              $rootScope.url=data.url;
+                              //photoUrl.set(data);
+                               $location.path('/uploadAdd');
+                            }).error(function (data, status, headers, config) {
+                              $scope.f.result = data;
+                              alert($scope.f.result);
+                            });
+
+
     };
 
   }]);

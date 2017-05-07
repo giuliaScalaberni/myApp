@@ -2,7 +2,7 @@
     ng-model="f"
     ng-multiple="true">
 
-      <h1>VERIFY (GIULIA)</h1>
+    <h1>Add Person Face (Giulia)</h1>
 
 
       <webcam channel="channel"
@@ -16,9 +16,9 @@
                       <!--SNAPPING -->
             <div class="form_controls">
                 <div class="upload_button_holder">
-                    <button  class="btn btn-danger" ng-model="files" ng-click="makeSnapshot()" multiple title="upload" resetOnClick="true" >Upload</button>
+                    <button  class="btn btn-success" ng-model="files"  ng-click="makeSnapshot()"   multiple title="upload" resetOnClick="true" >Snap</button>
 
-                        <canvas id="snapshot" width="300" height="300"></canvas>
+                        <!--canvas id="snapshot" width="300" height="300"></canvas-->
                   </div>
 
             </div>
@@ -45,9 +45,28 @@
           </table>
         </div>
 
+        <div id="modalUpload" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Snapshot</h4>
+      </div>
+      <div class="modal-body">
+        <p>Sure to upload?</p>
+        <canvas id="snapshot" width="300" height="300"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+        <button type="button" class="btn btn-primary" ng-model="files"  ng-click="uploadSnapshot()"   multiple title="upload" resetOnClick="true">Upload</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 </div>
 
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/config.js"></script>
-<script src="scripts/controllers/controllers.js"></script>
+<script src="scripts/controllers/add_face.js"></script>
 <script src="scripts/controllers/services.js"></script>

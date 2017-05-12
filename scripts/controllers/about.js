@@ -9,7 +9,7 @@
  */
 
     var cognitiveController = angular.module('cognitiveController', []);
-cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http) {
+cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http,$location) {
   var params = {
       // Request parameters
       "returnFaceId": "true",
@@ -25,7 +25,12 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http) {
         },
          data: obj
     }).then(function mySucces(response) {
+    if (response.data.length==0)
 
+  {
+      alert("Unsuccessfully operation, please verify again");
+      $location.path('/photos');
+    } else{
     alert(response.data[0].faceId);
     var id=response.data[0].faceId;
 
@@ -42,13 +47,16 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http) {
           data: obj
           // data: obj
       }).then(function mySucces(result) {
+
+
         alert($scope.myWelcome = result.data["isIdentical"]);
-      }, function myError(response) {
+
+      }, function myError(result) {
           alert($scope.myWelcome = result.data.error.code+": "+result.data.error.message);
       });
 
 
-    }, function myError(response) {
+    }}, function myError(response) {
         $scope.myWelcome = response.statusText;
     });
 

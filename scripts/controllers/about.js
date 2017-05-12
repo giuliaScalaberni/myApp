@@ -47,8 +47,15 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http,$l
           data: obj
           // data: obj
       }).then(function mySucces(result) {
+        if (result.data["isIdentical"]===true){
         $location.path('/welcome');
+      }
+        else {
 
+
+          alert("User not identical. Please try again");
+          $location.path('/photos');
+        }
         //alert($scope.myWelcome = result.data["isIdentical"]);
 
 
@@ -64,24 +71,6 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http,$l
     });
 
 
-/*  $.ajax({
-      url: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
-      beforeSend: function(xhrObj){
-          // Request headers
-          //xhrObj.setRequestHeader("Content-Type","application/octet-stream");
-          xhrObj.setRequestHeader("Content-Type","application/json");
-          xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","66dfd0519d9144d798e72d8fb4ce03e1");
-      },
-      type: "POST",
-      // Request body
-      data:    obj
-  })
-  .done(function(data) {
-      alert("success");
-  })
-  .fail(function() {
-      alert("error");
-  });
-});*/
+
 
 });

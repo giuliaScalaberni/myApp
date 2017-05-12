@@ -13,7 +13,12 @@
   <div class="col-md-4" >
     <h1>PhotoSpeed groups</h1>
     <div class="list-group">
-      <a ng-repeat="group in groups" href="#" class="list-group-item">{{group.name}}</a>
+      <a ng-repeat="group in groups" onClick="findPeople()" class="list-group-item" id="{{group.personGroupId}}">{{group.name}}</a>
+
+    </div>
+    <div class="list-group">
+      <a ng-repeat="person in people" href="#" class="list-group-item" id="{{person.personId}}">{{person.name}}</a>
+
     </div>
   </div>
   <div class="col-md-4"></div>

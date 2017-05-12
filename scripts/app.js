@@ -21,6 +21,7 @@
    'addFaceController',
    'cognitiveController',
    'cognAddFileController',
+   'welcomeController',
     'webcam'
  ]);
  documentsApp.config(['$routeProvider',
@@ -48,6 +49,11 @@
        templateUrl: 'views/about.html',
        controller: 'AboutCtrl',
        controllerAs: 'about'
+     }).when('/welcome',{
+       templateUrl:'views/welcome.html',
+       controller:'WelcomeCtrl',
+
+
      })
      .otherwise({
        redirectTo: '/'

@@ -28,10 +28,10 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http,$l
     if (response.data.length==0)
 
   {
-      alert("Unsuccessfully operation, please verify again");
+      alert("Unsuccessfully operation, please verify again! Make sure your snapshot is ok.");
       $location.path('/photos');
     } else{
-    alert(response.data[0].faceId);
+    alert("Good snap!");
     var id=response.data[0].faceId;
 
     var obj = '{ "faceId": "'+id+'","personId": "bf0d6b4a-c928-487e-91cb-efab9abf0435","personGroupId": "050498"}';
@@ -47,17 +47,20 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http,$l
           data: obj
           // data: obj
       }).then(function mySucces(result) {
+        $location.path('/welcome');
 
+        //alert($scope.myWelcome = result.data["isIdentical"]);
 
-        alert($scope.myWelcome = result.data["isIdentical"]);
 
       }, function myError(result) {
           alert($scope.myWelcome = result.data.error.code+": "+result.data.error.message);
+          $location.path('/photos');
       });
 
 
     }}, function myError(response) {
-        $scope.myWelcome = response.statusText;
+      alert($scope.myWelcome = response.statusText );
+      $location.path('/photos');
     });
 
 

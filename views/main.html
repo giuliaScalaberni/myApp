@@ -13,17 +13,17 @@
   <div class="col-md-4" >
 
     <h1>PhotoSpeed groups</h1>
-    <div ng-show="warningAlert" class="alert alert-warning alert-dismissable">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Warning!</strong> No people in this group.
-    </div>
     <div class="list-group">
       <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}}</a>
 
     </div>
+    <hr>
     <div class="list-group">
       <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}}</a>
-
+    </div>
+    <div ng-show="warningAlert" class="alert alert-warning alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Warning!</strong> No people in this group.
     </div>
 
   </div>

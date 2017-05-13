@@ -8,60 +8,47 @@
  * Controller of the documentsApp
  */
 angular.module('documentsApp')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function ($scope, $http) {
+    $scope.warningAlert = 0;
+    $http({
+          method : "GET",
+          url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups",
+          headers: {
+            'Content-Type': 'application/json',
+            'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+          },
+      }).then(function mySucces(response) {
+        $scope.groups = response.data;
 
-    $(function() {
-      if($.fn.cloudinary_fileupload !== undefined) {
-        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-      }
+      }, function myError(response) {
+          alert("ERRORE");
+      });
+
+      $scope.findPeople=function(id){
+        $http({
+              method : "GET",
+              url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+id+"/persons",
+              headers: {
+                'Content-Type': 'application/json',
+                'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+              },
+          }).then(function mySucces(response) {
+            if (response.data.length==0){
+              $scope.people='';
+              $scope.warningAlert=1;
+              //alert("Warning: no user for this group");
+            }
+            else{
+              $scope.warningAlert=0;
+                $scope.people='';
+            //alert(response.data[0].name)
+            $scope.people = response.data;
+            }
+
+          }, function myError(response) {
+              alert("ERRORE");
+          });
+
+      };
+
     });
-    /**$(#deviceready).append($.cloudinary.unsigned_upload_tag("giulia_unsigned",
-  { cloud_name: 'giulia' }));*/
-
-
-       // Application Constructor
-
-
-       // deviceready Event Handler
-       //
-       // Bind any cordova events here. Common events are:
-       // 'pause', 'resume', etc.
-       angular.element(document).ready(function () {
-
-     //Grab elements, create settings, etc.
-   var video = document.getElementById('video');
-   var canvas = document.getElementById('canvas');
-   var context = canvas.getContext('2d');
-
-   // Get access to the camera!
-   if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-       // Not adding `{ audio: true }` since we only want video now
-       navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-           video.src = window.URL.createObjectURL(stream);
-           video.play();
-       });
-   }
-
-   document.getElementById("snap").addEventListener("click", function() {
-
-   	context.drawImage(video, 0, 0, 640, 480);
-
-
-   canvas.toBlob(function(blob) {
-       var x=saveAs(blob, "image.png");
-      // var data = canvas.toDataURL("image/png");
-
-
-
-       alert(context.getImageData(0, 0, 640, 480).data);
-       window.location.href = data;
-
-
-
-
-     });
-
-     //window.open(canvas.toDataURL("image/jpg"));
-   });
-
- }); });

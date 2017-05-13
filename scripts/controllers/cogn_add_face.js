@@ -45,7 +45,6 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
               'Content-Type': 'application/json',
               'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
             },
-            // data: obj
         }).then(function mySucces(response) {
           $scope.faces = response.data;
         }, function myError(response) {

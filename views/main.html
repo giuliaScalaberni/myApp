@@ -1,24 +1,32 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>Hello Admin!</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    Another work day is going to start!
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <p><a class="btn btn-lg btn-success" ng-href="/#!/photos">Login!<span class="glyphicon glyphicon-ok"></span></a></p>
 </div>
 
 <div class="row marketing">
 
-            <div class="col-md-4"></div>
-            <div class="col-md-4" center>
-              <h1>PhotoSpeed</h1>
-              <div id="deviceready" >
-                  <video id="video" width="400" height="400" autoplay></video>
-                  <button class="btn btn-warning"id="snap">Snap Photo</button>
-                  <canvas id="canvas" width="640" height="480"></canvas>
-              </div>
-              </div>
-                <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4" >
 
-          <!-- Latest compiled and minified JavaScript -->
-        </div>
+    <h1>PhotoSpeed groups</h1>
+    <div ng-show="warningAlert" class="alert alert-warning alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Warning!</strong> No people in this group.
+    </div>
+    <div class="list-group">
+      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}}</a>
+
+    </div>
+    <div class="list-group">
+      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}}</a>
+
+    </div>
+
+  </div>
+  <div class="col-md-4"></div>
+
+</div>

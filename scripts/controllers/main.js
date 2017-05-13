@@ -24,11 +24,10 @@ angular.module('documentsApp')
           alert("ERRORE");
       });
 
-      $scope.findPeople=function(){
-        var $this = $(this);
-        alert($this);
+      $scope.findPeople=function(id){
+        alert(id);
         var params={
-        "personGroupId": $this
+        "personGroupId": id
       };
         $http({
               method : "GET",

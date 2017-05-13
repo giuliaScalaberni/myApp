@@ -17,14 +17,12 @@ angular.module('documentsApp')
             'Content-Type': 'application/json',
             'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
           },
-          // data: obj
       }).then(function mySucces(response) {
         $scope.groups = response.data;
 
       }, function myError(response) {
           alert("ERRORE");
       });
-
 
       $scope.findPeople=function(){
         var $this = $(this);
@@ -48,4 +46,4 @@ angular.module('documentsApp')
 
       };
 
-     });
+    });

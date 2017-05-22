@@ -113,7 +113,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
         }
       }
     };*/
-    $scope.uploadSnapshot=function(){
+    $scope.uploadSnapshot=function(path){
          $('#modalUpload').modal('hide');
                             $scope.f.upload = $upload.upload({
                               url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
@@ -134,7 +134,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                               //$rootScope.photos.push(data);
                               $rootScope.url=data.url;
                               //photoUrl.set(data);
-                               $location.path('/about');
+                               $location.path(path);
                             }).error(function (data, status, headers, config) {
                               $scope.f.result = data;
                               alert($scope.f.result);

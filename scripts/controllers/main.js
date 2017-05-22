@@ -8,7 +8,7 @@
  * Controller of the documentsApp
  */
 angular.module('documentsApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $route) {
     $scope.warningAlert = 0;
     $http({
           method : "GET",
@@ -33,7 +33,7 @@ angular.module('documentsApp')
                 'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
               },
           }).then(function mySucces(response) {
-            
+
             if (response.data.length==0){
               $scope.people='';
               $scope.warningAlert=1;
@@ -52,4 +52,25 @@ angular.module('documentsApp')
 
       };
 
-    });
+    $scope.trash=function(id){
+      $scope.id=id;
+      $('#modalDelete').modal('show');
+    };
+    $scope.delete=function(id){
+       $('#modalDelete').modal('hide');
+       $http({
+             method : "delete",
+             url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+id,
+             headers: {
+               'Content-Type': 'application/json',
+               'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+             }
+         }).then(function mySucces(response) {
+            alert("Delete succeeded");
+            $route.reload();
+         }, function myError(response) {
+             alert(response.error.code+": "+response.error.message);
+         });
+
+    };
+});

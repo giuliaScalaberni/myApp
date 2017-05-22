@@ -23,8 +23,13 @@
    'cognAddFileController',
    'welcomeController',
     'webcam',
-    'addGroupController'
+    'addGroupController',
+    //'uploadSnap'
+
+
  ]);
+
+
  documentsApp.config(['$routeProvider',
    function ($routeProvider) {
      $routeProvider

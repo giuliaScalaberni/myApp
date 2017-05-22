@@ -13,15 +13,33 @@
   <div>
     <div class="list-group">
       <br>
-      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}})</a>
+      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}}) <button class="text-right btn btn-danger text-left"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <hr>
     <div class="list-group">
-      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.id}})</a>
+      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
     </div>
     <div ng-show="warningAlert" class="alert alert-warning alert-dismissable">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Warning!</strong> No people in this group.
+    </div>
+
+  </div>
+  <div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Group</h4>
+        </div>
+        <div class="modal-body">
+          <p>Sure to delete that?</p>
+          <h4><small>Group ID </small>{{id}}</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+          <button type="button" class="btn btn-danger" ng-model="files"  ng-click="delete(id)"   multiple title="Delete" resetOnClick="true">Delete it</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

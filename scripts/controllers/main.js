@@ -21,7 +21,7 @@ angular.module('documentsApp')
         $scope.groups = response.data;
 
       }, function myError(response) {
-          alert("ERRORE");
+          alert("Error");
       });
 
       $scope.findPeople=function(id){
@@ -48,7 +48,7 @@ angular.module('documentsApp')
             }
 
           }, function myError(response) {
-              alert("ERRORE");
+              alert("Error");
           });
 
       };
@@ -79,7 +79,7 @@ angular.module('documentsApp')
             $scope.pid="";
             $route.reload();
          }, function myError(response) {
-             alert(response.error.code+": "+response.error.message);
+             alert("Not possible to delete");
          });
          }
          else {

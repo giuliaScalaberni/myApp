@@ -4,7 +4,7 @@
 
 var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUpload']);
 
-photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
+photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary', //'uploadSnap',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
     var getVideoData = function getVideoData(x, y, w, h) {
@@ -71,48 +71,9 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
              }
 
           }}};
-
-                      /*if (patData!=''){
-
-                          var f = new Image();
-                          f.src = patCanvas.toDataURL();
-
-
-
-                         $scope.f=f;
-
-                               if (f &&!f.$error) {
-                      f.upload = $upload.upload({
-                        url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
-                        data: {
-                          upload_preset: cloudinary.config().upload_preset,
-                          tags: 'myphotoalbum',
-                          context: 'photo=' + $scope.title,
-                          file: f.src
-                        }
-                      }).progress(function (e) {
-                        f.progress = Math.round((e.loaded * 100.0) / e.total);
-                        f.status = "Uploading... " + f.progress + "%";
-
-                      }).success(function (data, status, headers, config) {
-                        $rootScope.photos = $rootScope.photos || [];
-                        data.context = {custom: {photo: $scope.title}};
-                        f.result = data;
-                        //$rootScope.photos.push(data);
-                        $rootScope.url=data.url;
-                        //photoUrl.set(data);
-                         $location.path('/about');
-                      }).error(function (data, status, headers, config) {
-                        f.result = data;
-                        alert(f.result);
-                      });
-                    };
-
-
-
-        }
-      }
-    };*/
+          $scope.uploadSnapshot=function(path){
+            uploadSnap.upload(path);
+          };
     $scope.uploadSnapshot=function(path){
          $('#modalUpload').modal('hide');
                             $scope.f.upload = $upload.upload({

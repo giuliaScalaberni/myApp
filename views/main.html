@@ -17,7 +17,7 @@
     </div>
     <hr>
     <div class="list-group">
-      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
+      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})<button class="text-right btn btn-danger text-left"  ng-click="trashP(person.personId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <div ng-show="warningAlert" class="alert alert-warning alert-dismissable">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -33,13 +33,13 @@
         </div>
         <div class="modal-body">
           <p>Sure to delete that?</p>
-          <h4><small>Group ID </small>{{id}}</h4>
+          <h4><small>ID </small>{{gid}} {{pid}}</h4>
           <hr>
           <i>REMEBER: Persisted face images of all people in the person group will also be deleted</i>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-          <button type="button" class="btn btn-danger" ng-model="files"  ng-click="delete(id)"   multiple title="Delete" resetOnClick="true">Delete it</button>
+          <button type="button" class="btn btn-danger" ng-model="files"  ng-click="delete(group.personGroupId)"   multiple title="Delete" resetOnClick="true">Delete it</button>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
  * Controller of the documentsApp
  */
 angular.module('documentsApp')
-  .controller('MainCtrl', function ($scope, $http, $route) {
+  .controller('MainCtrl', function ($scope, $http, $route, $rootScope) {
     $scope.warningAlert = 0;
     $http({
           method : "GET",
@@ -25,6 +25,7 @@ angular.module('documentsApp')
       });
 
       $scope.findPeople=function(id){
+        $rootScope.groupId=id;
         $http({
               method : "GET",
               url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+id+"/persons",
@@ -53,24 +54,51 @@ angular.module('documentsApp')
       };
 
     $scope.trash=function(id){
-      $scope.id=id;
+      $scope.gid=id;
       $('#modalDelete').modal('show');
+      $scope.item="group";
     };
-    $scope.delete=function(id){
+    $scope.trashP=function(pid){
+        $scope.pid=pid;
+        $('#modalDelete').modal('show');
+        $scope.item="person";
+      };
+    $scope.delete=function(){
        $('#modalDelete').modal('hide');
+       if ($scope.item=="group"){
        $http({
              method : "delete",
-             url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+id,
+             url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+$scope.gid,
              headers: {
                'Content-Type': 'application/json',
                'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
              }
          }).then(function mySucces(response) {
             alert("Delete succeeded");
+            $scope.gid="";
+            $scope.pid="";
             $route.reload();
          }, function myError(response) {
              alert(response.error.code+": "+response.error.message);
          });
+         }
+         else {
+           $http({
+                 method : "delete",
+                 url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+$rootScope.groupId+"/persons/"+$scope.pid,
+                 headers: {
+                   'Content-Type': 'application/json',
+                   'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+                 }
+             }).then(function mySucces(response) {
+                alert("Delete succeeded");
+                $scope.gid="";
+                $scope.pid="";
+                $route.reload();
+             }, function myError(response) {
+                 alert("Not possible to delete");
+             });
+         }
 
     };
 });

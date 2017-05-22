@@ -2,17 +2,16 @@
 <div class="col-md-4">
   <div class="form-group">
     <label class="from-label">ID</label>
-    <input type="text"class="form-control" placeholder="Group ID" id="id"></input>
+    <input type="text"class="form-control" placeholder="Group ID" id="id" required></input>
   </div>
   <div class="form-group">
     <label class="from-label">Name</label>
-    <input type="text" class="form-control" placeholder="Group Name" id="name"></input>
+    <input type="text" class="form-control" placeholder="Group Name" id="name" required></input>
   </div>
   <div class="form-group">
     <label class="from-label">Data</label>
-    <input type="text" class="form-control" placeholder="Description" id="data"></input>
+    <input type="text" class="form-control" placeholder="Description" id="data" required></input>
   </div>
-  <button class="btn btn-success" type="button" id="btnNewGroup" ng-click="createGroup()">Create New Group</button>
-
+  <button class="btn btn-success" type="button" ng-click="createGroup()" id="btnNewGroup">Create New Group</button>
 </div>
 <div class="col-md-4"></div>

@@ -33,7 +33,7 @@ angular.module('documentsApp')
                 'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
               },
           }).then(function mySucces(response) {
-            
+
             if (response.data.length==0){
               $scope.people='';
               $scope.warningAlert=1;
@@ -52,4 +52,7 @@ angular.module('documentsApp')
 
       };
 
+$scope.trash=function(id){
+  alert("sure to delete"+id);
+};
     });

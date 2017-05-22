@@ -13,11 +13,11 @@
   <div>
     <div class="list-group">
       <br>
-      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}})</a>
+      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}}) <button class="btn btn-danger text-left"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <hr>
     <div class="list-group">
-      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.id}})</a>
+      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
     </div>
     <div ng-show="warningAlert" class="alert alert-warning alert-dismissable">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

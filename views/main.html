@@ -13,7 +13,7 @@
   <div>
     <div class="list-group">
       <br>
-      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}}) <button class="btn btn-danger text-left"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}}) <button class="text-right btn btn-danger text-left"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <hr>
     <div class="list-group">

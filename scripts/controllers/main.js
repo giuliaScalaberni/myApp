@@ -53,6 +53,7 @@ angular.module('documentsApp')
       };
 
 $scope.trash=function(id){
+   
   alert("sure to delete"+id);
 };
     });

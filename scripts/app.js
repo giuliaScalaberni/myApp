@@ -22,7 +22,8 @@
    'cognitiveController',
    'cognAddFileController',
    'welcomeController',
-    'webcam'
+    'webcam',
+    'addGroupController'
  ]);
  documentsApp.config(['$routeProvider',
    function ($routeProvider) {
@@ -52,8 +53,10 @@
      }).when('/welcome',{
        templateUrl:'views/welcome.html',
        controller:'WelcomeCtrl',
-
-
+     })
+     .when('/add-group', {
+       templateUrl: 'views/add-group.html',
+       controller: 'addGroupCtrl',
      })
      .otherwise({
        redirectTo: '/'

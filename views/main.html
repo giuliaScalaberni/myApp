@@ -6,16 +6,14 @@
   </p>
   <p><a class="btn btn-lg btn-success" ng-href="/#!/photos">Login!<span class="glyphicon glyphicon-ok"></span></a></p>
 </div>
-
-<div class="row marketing">
-
-  <div class="col-md-4"></div>
-  <div class="col-md-4" >
-
-    <h1>PhotoSpeed groups</h1>
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  <h1>PhotoSpeed groups</h1>
+  <button class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group">New Group</a></button>
+  <div>
     <div class="list-group">
+      <br>
       <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}}</a>
-
     </div>
     <hr>
     <div class="list-group">
@@ -25,8 +23,6 @@
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Warning!</strong> No people in this group.
     </div>
-
   </div>
-  <div class="col-md-4"></div>
-
 </div>
+<div class="col-md-4"></div>

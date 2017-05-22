@@ -48,7 +48,7 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
         }).then(function mySucces(response) {
           $scope.faces = response.data;
         }, function myError(response) {
-            alert("ERRORE");
+            alert("Error");
         });
 
 

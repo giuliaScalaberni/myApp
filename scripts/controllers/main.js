@@ -66,7 +66,7 @@ angular.module('documentsApp')
                'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
              }
          }).then(function mySucces(response) {
-            alert("Delete with success");
+            alert("Delete succeeded");
             $route.reload();
          }, function myError(response) {
              alert(response.error.code+": "+response.error.message);

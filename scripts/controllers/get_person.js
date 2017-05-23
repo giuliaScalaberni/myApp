@@ -11,11 +11,10 @@
     var getPersonController = angular.module('getPersonController', []);
 getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http) {
 
-
     var params = {
         // Request parameters
-        "personGroupId": "050498",
-        "personId": "bf0d6b4a-c928-487e-91cb-efab9abf0435"
+        "personGroupId": $rootScope.groupId,
+        "personId":   $rootScope.userId
     };
     $http({
           method : "GET",

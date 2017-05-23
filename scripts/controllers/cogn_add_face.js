@@ -28,10 +28,12 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
          data: obj
     }).then(function mySucces(response) {
       $scope.warningAlert=0;
-      alert("Face added, id: "+response.data.persistedFaceId);
+      $scope.myWelcome="Face added, id: "+response.data.persistedFaceId;
+      $scope.successAlert=1;
     }, function myError(response) {
         $scope.myWelcome = response.data.error.code+": "+response.data.error.message;
         $scope.warningAlert=1;
+        $scope.successAlert=0;
     });
 
     $scope.getFaces=function(){
@@ -50,6 +52,7 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
         }).then(function mySucces(response) {
           $scope.faces = response.data;
           $scope.warningAlert=0;
+          $scope.successAlert=0;
         }, function myError(response) {
             alert("Error");
         });

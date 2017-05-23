@@ -17,7 +17,7 @@
     </div>
     <hr>
     <div class="list-group">
-      <a ng-repeat="person in people"  class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})<button class="text-right btn btn-danger text-left"  ng-click="trashP(person.personId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+      <a ng-repeat="person in people" ng-click="showPerson(this.id)" class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})<button class="text-right btn btn-danger text-left"  ng-click="trashP(person.personId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <div ng-show="warningAlert" class="alert alert-warning alert-dismissable">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

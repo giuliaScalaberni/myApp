@@ -32,6 +32,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
             $scope.alert=0;
         }
         $scope.faces = response.data;
+        $rootScope.name=response.data.userData;
 
       }, function myError(response) {
           //alert("No parameters to get a response");
@@ -50,6 +51,9 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           $('#modalDelete').modal('show');
 
         }
+        $scope.addPhoto=function(){
+          $location.path("/add");
+        };
 
         $scope.delete=function(){
            $('#modalDelete').modal('hide');

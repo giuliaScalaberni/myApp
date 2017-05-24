@@ -7,6 +7,9 @@ var addFaceController = angular.module('addFaceController', ['ngFileUpload']);
 addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
+    if ($rootScope.name==undefined){
+      $location.path('/');
+    }
     var getVideoData = function getVideoData(x, y, w, h) {
        var hiddenCanvas = document.createElement('canvas');
        hiddenCanvas.width = _video.width;

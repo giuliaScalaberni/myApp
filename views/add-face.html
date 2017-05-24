@@ -2,7 +2,9 @@
     ng-model="f"
     ng-multiple="true">
 
-    <h1>Add Person Face (Giulia)</h1>
+    <h1>PhotoSpeed Add Face</h1>
+    <h3><u>User</u> {{name}}</h3>
+
 
 
       <webcam channel="channel"
@@ -10,8 +12,11 @@
         on-error="onError(err)"
         on-stream="onStream(stream)" id="snap"> </webcam>
 
-
-
+        <hr>
+        <div class="form-group">
+          <label class="from-label">Date</label>
+          <input type="text" class="form-control" placeholder="Group Name" id="name" enabled="false"></input>
+        </div>
 
                       <!--SNAPPING -->
             <div class="form_controls">
@@ -44,8 +49,7 @@
             </tr>
           </table>
         </div>
-
-        <div id="modalUpload" class="modal fade" tabindex="-1" role="dialog">
+  <div id="modalUpload" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,7 +70,7 @@
 
 </div>
 
-<script src="scripts/app.js"></script>
+<!--script src="scripts/app.js"></script>
 <script src="scripts/controllers/config.js"></script>
 <script src="scripts/controllers/add_face.js"></script>
-<script src="scripts/controllers/services.js"></script>
+<script src="scripts/controllers/services.js"></script-->

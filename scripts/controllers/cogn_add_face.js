@@ -9,13 +9,13 @@
  */
 
     var cognAddFileController = angular.module('cognAddFileController', []);
-cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, $http) {
+cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, $http, $location) {
 
   var params = {
       // Request parameters
       "personGroupId": $rootScope.groupId,
-      "personId": $rootScope.personId,
-      "userData": "photoXXX",
+      "personId":  $rootScope.userId,
+      "userData": $('#date').val(),
   };
   var obj='{"url":"'+$rootScope.url+'"}';
   $http({
@@ -39,8 +39,8 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
     $scope.getFaces=function(){
       var params = {
           // Request parameters
-          "personGroupId": "050498",
-          "personId": "bf0d6b4a-c928-487e-91cb-efab9abf0435"
+          "personGroupId": $rootScope.groupId,
+          "personId":  $rootScope.userId,
       };
       $http({
             method : "GET",
@@ -55,6 +55,7 @@ cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, 
           $scope.successAlert=0;
         }, function myError(response) {
             alert("Error");
+            $location.path("/");
         });
 
 

@@ -10,6 +10,8 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
     if ($rootScope.name==undefined){
       $location.path('/');
     }
+    $("#date").val(new Date());
+
     var getVideoData = function getVideoData(x, y, w, h) {
        var hiddenCanvas = document.createElement('canvas');
        hiddenCanvas.width = _video.width;

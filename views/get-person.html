@@ -1,19 +1,31 @@
-<!--div ng-show="warningAlert" class="alert alert-danger alert-dismissable">
-  <a href="/#!/add" class="close" data-dismiss="danger" aria-label="close">&times;</a>
-  <strong>ERROR!</strong> {{myWelcome}}
-</div>
-<div ng-show="successAlert" class="alert alert-success">
-  <strong>Well Done!</strong> {{myWelcome}}
-</div>
-<br-->
-<h3>{{faces.name}} profile</h3>
+
+<h3>{{faces.name}} profile</h3> <button class="btn btn-danger" ng-click="trashPerson()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
 <h4><u>Personal ID</u>  {{faces.personId}}</h4>
 <h4><u>More infos</u>  {{faces.userData}}</h4>
 <hr>
 <table class="table" >
-  <thead><tr><th>Persisted Id</th></tr></thead>
-  <tr ng-repeat="x in faces.persistedFaceIds"><td>{{x}}</td></tr>
+  <thead><tr><th>Persisted Id</th><th></th></tr></thead>
+  <tr ng-repeat="x in faces.persistedFaceIds"><td>{{x}}</td><td><button class="text-right btn btn-danger text-left"  ng-click="trashPhoto(x)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>
 </table>
 <div ng-show="alert" class="alert alert-warning">
   <strong>Warning!</strong> No photos for this person
+</div>
+<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete</h4>
+      </div>
+      <div class="modal-body">
+        <p>Sure to delete that?</p>
+        <h4><b>ID</b> {{id}}</h4>
+        <hr>
+        <i>REMEBER: all infos about this element will also be deleted</i>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+        <button type="button" class="btn btn-danger" ng-model="files"  ng-click="delete()"   multiple title="Delete" resetOnClick="true">Delete it</button>
+      </div>
+    </div>
+  </div>
 </div>

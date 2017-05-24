@@ -15,7 +15,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
   $scope.createPerson=function(){
     var obj='{"name":"'+$('#name').val()+'", "userData":"'+$('#data').val()+'"}';
     $http({
-            method : "PUT",
+            method : "POST",
             url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/"+$rootScope.groupId+"/persons",
             headers: {
               'Content-Type': 'application/json',
@@ -24,13 +24,13 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
             data: obj
           })
           .then(function mySucces(response) {
-            alert("New person created! "+ response.personId);
-            $rootScope.userId=response.personId;
+            alert("New person created! "+ response.data.personId);
+            $rootScope.userId=response.data.personId;
             $location.path('/get-person');
           },
           function myError(response) {
             alert(response.data.error.code+": "+response.data.error.message);
-            
+
           });
         };
 });

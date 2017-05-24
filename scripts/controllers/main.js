@@ -10,6 +10,7 @@
 angular.module('documentsApp')
   .controller('MainCtrl', function ($scope, $http, $route, $rootScope, $location) {
     $scope.warningAlert = 0;
+    $scope.button=0;
     $http({
           method : "GET",
           url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups",
@@ -46,8 +47,10 @@ angular.module('documentsApp')
             //alert(response.data[0].name)
             $scope.people = response.data;
             }
+            $scope.button=1;
 
           }, function myError(response) {
+              $scope.button=0;
               alert("Error");
           });
 

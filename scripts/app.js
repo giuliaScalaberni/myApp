@@ -25,6 +25,7 @@
     'webcam',
     'addGroupController',
     'getPersonController',
+    'addPersonController',
     //'uploadSnap'
 
 
@@ -68,7 +69,10 @@
        templateUrl: 'views/get-person.html',
        controller: 'getPersonCtrl',
      })
-
+     .when('/add-person', {
+       templateUrl: 'views/add-person.html',
+       controller: 'addPersonCtrl',
+     }) 
      .otherwise({
        redirectTo: '/'
      });

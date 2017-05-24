@@ -24,9 +24,17 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
             'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
           },
       }).then(function mySucces(response) {
+        if (response.data.persistedFaceIds.length==0)
+        {
+          $scope.alert=1;
+        }
+        else{
+            $scope.alert=0;
+        }
         $scope.faces = response.data;
+
       }, function myError(response) {
-          alert("Error");
+          alert("No parameters to get a response");
       });
 
 

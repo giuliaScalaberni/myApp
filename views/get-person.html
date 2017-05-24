@@ -6,5 +6,8 @@
   <strong>Well Done!</strong> {{myWelcome}}
 </div>
 <br-->
-
-<p ng-repeat="x in faces">{{x}}</p>
+<h3>{{faces.name}} profile</h3>
+<h4><u>Personal ID</u>  {{faces.personId}}</h4>
+<h4><u>More infos</u>  {{faces.userData}}</h4>
+<hr>
+<p ng-repeat="x in faces.persistedFaceIds">{{x}}</p>

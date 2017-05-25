@@ -32,7 +32,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
             $scope.alert=0;
         }
         $scope.faces = response.data;
-        $rootScope.name=response.data.userData;
+        $rootScope.name=response.data.name;
 
       }, function myError(response) {
           //alert("No parameters to get a response");

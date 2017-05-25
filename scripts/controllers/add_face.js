@@ -7,8 +7,10 @@ var addFaceController = angular.module('addFaceController', ['ngFileUpload']);
 addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
+    alert($rootScope.name);
     if ($rootScope.name==undefined){
       $location.path('/');
+
     }
     $("#date").val(new Date());
 

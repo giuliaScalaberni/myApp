@@ -7,6 +7,10 @@ var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUplo
 photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$http','Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location,$http, $upload, cloudinary) {
+    if ($rootScope.userId==undefined){
+      $location.path('/');
+    }
+    $scope.warningAlert=0;
     var getVideoData = function getVideoData(x, y, w, h) {
        var hiddenCanvas = document.createElement('canvas');
        hiddenCanvas.width = _video.width;
@@ -108,12 +112,11 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                     },
                                      data: obj
                                 }).then(function mySucces(response) {
-                                if (response.data.length==0)
-
-                              {
-                                  alert("Unsuccessfully operation, please verify again! Make sure your snapshot is ok.");
-                                  $location.path('/photos');
-                                } else{
+                                if (response.data.length==0) {
+                                  $scope.myWelcome = "Unsuccessfully operation, please verify again! Make sure your snapshot is ok";
+                                  $scope.warningAlert=1;
+                                }
+                                else{
                                 alert("Good snap!");
                                 var id=response.data[0].faceId;
 
@@ -133,23 +136,22 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                     $location.path('/welcome');
                                   }
                                     else {
-
-
-                                      alert("User not identical. Please try again");
-                                      $location.path('/photos');
+                                      $scope.myWelcome="User not identical. Please try again";
+                                      $scope.warningAlert=1;
                                     }
                                     //alert($scope.myWelcome = result.data["isIdentical"]);
 
 
                                   }, function myError(result) {
-                                      alert($scope.myWelcome = result.data.error.code+": "+result.data.error.message);
-                                      $location.path('/photos');
+                                    $scope.myWelcome = result.data.error.code+": "+result.data.error.message;
+                                      $scope.warningAlert=1;
                                   });
 
 
                                 }}, function myError(response) {
-                                  alert($scope.myWelcome = response.statusText );
-                                  $location.path('/photos');
+                                  $scope.myWelcome = response.statusText;
+                                  $scope.warningAlert=1;
+
                                 });
 
 
@@ -157,8 +159,10 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
 
                                //$location.path(path);
                             }).error(function (data, status, headers, config) {
-                              $scope.f.result = data;
-                              alert($scope.f.result);
+                              //$scope.f.result = data;
+                              $scope.myWelcome = $scope.f.result;
+                              $scope.warningAlert=1;
+
                             });
 
 

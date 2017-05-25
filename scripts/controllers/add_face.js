@@ -4,10 +4,10 @@
 
 var addFaceController = angular.module('addFaceController', ['ngFileUpload']);
 
-addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
+addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routeParams','$http','$location', 'Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
-  function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
-    alert($rootScope.name);
+  function($scope, $rootScope, $routeParams,$http,$location, $upload, cloudinary) {
+
     if ($rootScope.name==undefined){
       $location.path('/');
 
@@ -81,7 +81,7 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                     }
       }
     };
-    $scope.uploadSnapshot=function(path){
+    $scope.uploadSnapshot=function(){
          $('#modalUpload').modal('hide');
                             $scope.f.upload = $upload.upload({
                               url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
@@ -101,8 +101,35 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                               $scope.f.result = data;
                               //$rootScope.photos.push(data);
                               $rootScope.url=data.url;
-                              //photoUrl.set(data);
-                               $location.path(path);
+                              var params = {
+                                  // Request parameters
+                                  "personGroupId": $rootScope.groupId,
+                                  "personId":  $rootScope.userId,
+                                  "userData": $('#date').val(),
+                              };
+                              var obj='{"url":"'+$rootScope.url+'"}';
+                              $http({
+                                    method : "POST",
+                                    url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/{personGroupId}/persons/{personId}/persistedFaces?" + $.param(params),
+                                    headers: {
+                                      'Content-Type': 'application/json',
+                                      'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+                                    },
+                                     data: obj
+                                }).then(function mySucces(response) {
+                                  $scope.warningAlert=0;
+                                  $scope.myWelcome="Face added, id: "+response.data.persistedFaceId;
+                                  $scope.successAlert=1;
+                                  $scope.f.progress = 0;
+                                  $scope.f.status = "";
+                                }, function myError(response) {
+                                    $scope.myWelcome = response.data.error.code+": "+response.data.error.message;
+                                    $scope.warningAlert=1;
+                                    $scope.successAlert=0;
+                                    $scope.f.progress = 0;
+                                    $scope.f.status = "";
+                                });
+
                             }).error(function (data, status, headers, config) {
                               $scope.f.result = data;
                               alert($scope.f.result);

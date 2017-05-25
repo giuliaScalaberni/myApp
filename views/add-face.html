@@ -1,10 +1,17 @@
 <div id="direct_upload"
     ng-model="f"
     ng-multiple="true">
-
     <h1>PhotoSpeed Add Face</h1>
     <h3><u>User</u> {{name}}</h3>
-
+    <br>
+    <div ng-show="warningAlert" class="alert alert-danger alert-dismissable">
+      <button type='button' class='close' data-dismiss='alert'>×</button>
+      <strong>ERROR!</strong> {{myWelcome}}
+    </div>
+    <div ng-show="successAlert" class="alert alert-success alert-dismissable">
+        <button type='button' class='close' data-dismiss='alert'>×</button>
+      <strong>Well Done!</strong> {{myWelcome}}
+    </div>
 
 
       <webcam channel="channel"
@@ -30,12 +37,12 @@
 
     <h2>Status</h2>
     <div class="file" >
-        <h3>{{f.name}} {{f.$error}} {{f.$errorParam}}</h3>
+        <!--h3>{{f.name}} {{f.$error}} {{f.$errorParam}}</h3-->
         <div class="status">{{f.status}}</div>
         <div class="progress">
     <div class="progress-bar progress-bar-striped bg-warning" role="progressbar"  aria-valuemin="0" aria-valuemax="100" ng-style="{'width': f.progress+'%'}"  ></div>
   </div>
-        <div class="form_line">
+        <!--div class="form_line">
             <div class="form_controls">
                 <div class="preview">
                     <img ngf-src="f.result.url || f">
@@ -48,7 +55,7 @@
               <td> {{key}} </td> <td> {{ value }} </td>
             </tr>
           </table>
-        </div>
+        </div-->
   <div id="modalUpload" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -61,7 +68,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-        <button type="button" class="btn btn-primary" ng-model="files"  ng-click="uploadSnapshot('/uploadAdd')"   multiple title="upload" resetOnClick="true">Upload</button>
+        <button type="button" class="btn btn-primary" ng-model="files"  ng-click="uploadSnapshot()"   multiple title="upload" resetOnClick="true">Upload</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

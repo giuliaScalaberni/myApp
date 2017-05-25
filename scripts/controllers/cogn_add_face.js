@@ -11,31 +11,7 @@
     var cognAddFileController = angular.module('cognAddFileController', []);
 cognAddFileController.controller('cognAddFileCtrl', function($scope,$rootScope, $http, $location) {
 
-  var params = {
-      // Request parameters
-      "personGroupId": $rootScope.groupId,
-      "personId":  $rootScope.userId,
-      "userData": $('#date').val(),
-  };
-  var obj='{"url":"'+$rootScope.url+'"}';
-  $http({
-        method : "POST",
-        url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/{personGroupId}/persons/{personId}/persistedFaces?" + $.param(params),
-        headers: {
-          'Content-Type': 'application/json',
-          'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
-        },
-         data: obj
-    }).then(function mySucces(response) {
-      $scope.warningAlert=0;
-      $scope.myWelcome="Face added, id: "+response.data.persistedFaceId;
-      $scope.successAlert=1;
-    }, function myError(response) {
-        $scope.myWelcome = response.data.error.code+": "+response.data.error.message;
-        $scope.warningAlert=1;
-        $scope.successAlert=0;
-    });
-
+  
     $scope.getFaces=function(){
       var params = {
           // Request parameters

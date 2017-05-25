@@ -81,6 +81,9 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                     }
       }
     };
+    $scope.goBack=function(){
+      window.history.back();
+    };
     $scope.uploadSnapshot=function(){
          $('#modalUpload').modal('hide');
                             $scope.f.upload = $upload.upload({

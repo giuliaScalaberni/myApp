@@ -4,9 +4,13 @@
 
 var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUpload']);
 
-photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary', //'uploadSnap',
+photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$http','Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
-  function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
+  function($scope, $rootScope, $routeParams, $location,$http, $upload, cloudinary) {
+    if ($rootScope.userId==undefined){
+      $location.path('/');
+    }
+    $scope.warningAlert=0;
     var getVideoData = function getVideoData(x, y, w, h) {
        var hiddenCanvas = document.createElement('canvas');
        hiddenCanvas.width = _video.width;
@@ -92,13 +96,73 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                               $rootScope.photos = $rootScope.photos || [];
                               data.context = {custom: {photo: $scope.title}};
                               $scope.f.result = data;
-                              //$rootScope.photos.push(data);
                               $rootScope.url=data.url;
-                              //photoUrl.set(data);
-                               $location.path(path);
+                              var params = {
+                                  // Request parameters
+                                  "returnFaceId": "true",
+                                  "returnFaceLandmarks": "false"
+                              };
+                              var obj='{"url":"'+$rootScope.url+'"}';
+                              $http({
+                                    method : "POST",
+                                    url : "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
+                                    headers: {
+                                      'Content-Type': 'application/json',
+                                      'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+                                    },
+                                     data: obj
+                                }).then(function mySucces(response) {
+                                if (response.data.length==0) {
+                                  $scope.myWelcome = "Unsuccessfully operation, please verify again! Make sure your snapshot is ok";
+                                  $scope.warningAlert=1;
+                                }
+                                else{
+                                alert("Good snap!");
+                                var id=response.data[0].faceId;
+
+                                var obj = '{ "faceId": "'+id+'","personId": "'+$rootScope.userId+'","personGroupId": "'+$rootScope.groupId+'"}';
+
+                                $http({
+                                      method : "POST",
+                                      url : "https://westus.api.cognitive.microsoft.com/face/v1.0/verify",
+                                      headers: {
+                                        'Content-Type': 'application/json',
+                                        'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
+                                      },
+                                      data: obj
+                                      // data: obj
+                                  }).then(function mySucces(result) {
+                                    if (result.data["isIdentical"]===true){
+                                    $location.path('/welcome');
+                                  }
+                                    else {
+                                      $scope.myWelcome="User not identical. Please try again";
+                                      $scope.warningAlert=1;
+                                    }
+                                    //alert($scope.myWelcome = result.data["isIdentical"]);
+
+
+                                  }, function myError(result) {
+                                    $scope.myWelcome = result.data.error.code+": "+result.data.error.message;
+                                      $scope.warningAlert=1;
+                                  });
+
+
+                                }}, function myError(response) {
+                                  $scope.myWelcome = response.statusText;
+                                  $scope.warningAlert=1;
+
+                                });
+
+
+
+
+                               //$location.path(path);
                             }).error(function (data, status, headers, config) {
-                              $scope.f.result = data;
-                              alert($scope.f.result);
+                              //$scope.f.result = data;
+                              $scope.myWelcome = $scope.f.result;
+                              $scope.warningAlert=1;
+
                             });
 
 

@@ -20,7 +20,6 @@
    'photoAlbumServices',
    'addFaceController',
    'cognitiveController',
-   'cognAddFileController',
    'welcomeController',
     'webcam',
     'addGroupController',
@@ -38,11 +37,6 @@
      .when('/add', {
        templateUrl: 'views/add-face.html',
        controller: 'addFaceCtrl',
-
-     })
-     .when('/uploadAdd', {
-       templateUrl: 'views/photo-add-result.html',
-       controller: 'cognAddFileCtrl',
 
      })
      .when('/photos', {
@@ -72,7 +66,7 @@
      .when('/add-person', {
        templateUrl: 'views/add-person.html',
        controller: 'addPersonCtrl',
-     }) 
+     })
      .otherwise({
        redirectTo: '/'
      });

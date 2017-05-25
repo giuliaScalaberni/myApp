@@ -117,9 +117,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                 alert("Good snap!");
                                 var id=response.data[0].faceId;
 
-                                var obj = '{ "faceId": "'+id+'","personId": "bf0d6b4a-c928-487e-91cb-efab9abf0435","personGroupId": "050498"}';
+                                var obj = '{ "faceId": "'+id+'","personId": "'+$rootScope.userId+'","personGroupId": "'+$rootScope.groupId+'"}';
 
-                                //var obj='{"url":"'+$rootScope.url+'"}';
                                 $http({
                                       method : "POST",
                                       url : "https://westus.api.cognitive.microsoft.com/face/v1.0/verify",

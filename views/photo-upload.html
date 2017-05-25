@@ -1,5 +1,6 @@
 <div id="direct_upload"    ng-model="f"    ng-multiple="true">
     <h1>PhotoSpeed Verify</h1>
+    <h3><u>User</u> {{name}}</h3>
     <webcam channel="channel"    on-streaming="onSuccess()"     on-error="onError(err)"     on-stream="onStream(stream)" id="snap"> </webcam>
     <div class="form_controls">
       <div class="upload_button_holder">
@@ -41,13 +42,8 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
                 <button type="button" class="btn btn-primary" ng-model="files"  ng-click="uploadSnapshot('/about')"   multiple title="upload" resetOnClick="true">Use it</button>
               </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-      </div><!-- /.modal -->
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
-
-<!--script src="scripts/app.js"></script>
-<script src="scripts/controllers/config.js"></script>
-<script src="scripts/controllers/controllers.js"></script>
-<script src="scripts/controllers/services.js"></script-->

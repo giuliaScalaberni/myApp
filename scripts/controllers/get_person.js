@@ -54,6 +54,10 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
         $scope.addPhoto=function(){
           $location.path("/add");
         };
+        $scope.verifyPerson=function(){
+          $rootScope.name=$scope.faces.name;
+          $location.path("/photos");
+        };
 
         $scope.delete=function(){
            $('#modalDelete').modal('hide');

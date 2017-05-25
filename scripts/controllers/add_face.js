@@ -81,7 +81,7 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                     }
       }
     };
-    $scope.uploadSnapshot=function(path){
+    $scope.uploadSnapshot=function(){
          $('#modalUpload').modal('hide');
                             $scope.f.upload = $upload.upload({
                               url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
@@ -120,10 +120,14 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                                   $scope.warningAlert=0;
                                   $scope.myWelcome="Face added, id: "+response.data.persistedFaceId;
                                   $scope.successAlert=1;
+                                  $scope.f.progress = 0;
+                                  $scope.f.status = "";
                                 }, function myError(response) {
                                     $scope.myWelcome = response.data.error.code+": "+response.data.error.message;
                                     $scope.warningAlert=1;
                                     $scope.successAlert=0;
+                                    $scope.f.progress = 0;
+                                    $scope.f.status = "";
                                 });
 
                             }).error(function (data, status, headers, config) {

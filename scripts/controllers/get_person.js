@@ -59,6 +59,13 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           $rootScope.name=$scope.faces.name;
           $location.path("/photos");
         };
+        $scope.getInfos=function(){
+          $http.get('Models/getUser.php').then(function(data){
+alert(data);
+});
+
+
+        };
 
         $scope.delete=function(){
            $('#modalDelete').modal('hide');

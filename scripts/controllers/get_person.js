@@ -60,7 +60,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           $location.path("/photos");
         };
         $scope.getInfos=function(){
-          $http.get('Models/getUser.php').then(function(data){
+          $http.get('localhost:9000/#!/Models/getUser.php').then(function(data){
 alert(data);
 });
 

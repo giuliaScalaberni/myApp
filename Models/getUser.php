@@ -2,7 +2,6 @@
 try{
   $connect=new PDO('mysql:dbname=PhotoEntry;localhost:8889','root', 'root');
 
-
 }
 catch(PDOException $e){
   echo 'CONNECTION FAILED: '.$e->getMessage();

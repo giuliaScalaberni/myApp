@@ -1,6 +1,20 @@
 <div id="direct_upload"    ng-model="f"    ng-multiple="true">
     <h1>PhotoEntry Verify</h1>
     <h3><u>User</u> {{name}}</h3>
+    <hr>
+    <label class="radio-inline">
+     <input type="radio" ng-model="action" ng-value="'In'">Entry
+   </label>
+   <label class="radio-inline">
+     <input type="radio" ng-model="action" ng-value="'Out'">Exit
+   </label>
+   <label class="radio-inline">
+     <input type="radio" ng-model="action" ng-value="'Pause_IN'">Start break
+   </label>
+   <label class="radio-inline">
+     <input type="radio" ng-model="action" ng-value="'Pause OUT'">End break
+   </label>
+   <hr>
     <br>
     <div ng-show="warningAlert" class="alert alert-danger alert-dismissable">
       <button type='button' class='close' data-dismiss='alert'>×</button>

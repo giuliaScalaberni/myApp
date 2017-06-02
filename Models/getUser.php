@@ -1,6 +1,6 @@
 <?php
 try{
-  $connect=new PDO('mysql:dbname=PhotoEntry;localhost:8889','root', 'root');
+  $connect=new PDO('mysql:dbname=PhotoEntry;localhost','root', 'root');
 
 }
 catch(PDOException $e){
@@ -8,7 +8,6 @@ catch(PDOException $e){
 }
   $stmt = $connect->prepare("SELECT * FROM utente");
   if ($stmt->execute()) {
-    header('Content-Type: application/json');
       echo json_encode($stmt->fetchAll());
 
 

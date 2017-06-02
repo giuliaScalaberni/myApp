@@ -59,26 +59,8 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           $rootScope.name=$scope.faces.name;
           $location.path("/photos");
         };
-        /*$scope.getInfos=function(){
-          $http.get('localhost:9000/#!/Models/getUser.php').then(function(data){
-alert(data);
-});
 
-
-        };*/
-        $scope.getInfos=function(){
-          $http({
-                method : "get",
-                url : 'http://localhost:80/getUser.php',
-
-    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-
-            }).then(function mySucces(response) {
-               alert(response.data);
-
-            })
-             };
-
+      
         $scope.delete=function(){
            $('#modalDelete').modal('hide');
            if ($scope.item=="photo"){

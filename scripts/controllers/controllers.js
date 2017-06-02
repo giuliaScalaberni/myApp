@@ -133,6 +133,21 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                       // data: obj
                                   }).then(function mySucces(result) {
                                     if (result.data["isIdentical"]===true){
+                                      var d='{"pId": "'+$rootScope.userId+'", "dateTime": "2017-06-02"}';
+                                      alert(d);
+                                        $http({
+                                              method : "post",
+                                              url : 'http://localhost:80/putPresent.php',
+                                              data: d,
+
+                                  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+                                          }).then(function mySucces(response) {
+                                             alert(response.data);
+
+                                          })
+
+
                                     $location.path('/welcome');
                                   }
                                     else {

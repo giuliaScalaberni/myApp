@@ -25,6 +25,18 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
           })
           .then(function mySucces(response) {
             alert("New person created! "+ response.data.personId);
+            var json = $.param({nome:$('#name').val() , pers: response.data.personId});
+            $http({
+              method : "POST",
+              url : 'http://localhost:80/putUser.php',
+              data: json,
+              headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+            }).then(function mySucces(ris) {
+            //  alert(ris);
+          
+              })
+
             $rootScope.userId=response.data.personId;
             $location.path('/get-person');
           },

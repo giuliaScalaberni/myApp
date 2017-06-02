@@ -135,7 +135,6 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                   }).then(function mySucces(result) {
 
                                     if (result.data["isIdentical"]===true){
-                                      alert($scope.action);
                                       var json = $.param({pId: $rootScope.userId, action: $scope.action});
                                       $http({
                                         method : "POST",

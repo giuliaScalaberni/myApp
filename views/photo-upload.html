@@ -2,8 +2,9 @@
     <h1>PhotoEntry Verify</h1>
     <h3><u>User</u> {{name}}</h3>
     <hr>
+    <div ng-init="action='In'">
     <label class="radio-inline">
-     <input type="radio" ng-model="action" ng-value="'In'">Entry
+     <input type="radio" ng-model="action" ng-value="'In'" checked="checked">Entry
    </label>
    <label class="radio-inline">
      <input type="radio" ng-model="action" ng-value="'Out'">Exit
@@ -14,6 +15,7 @@
    <label class="radio-inline">
      <input type="radio" ng-model="action" ng-value="'Pause OUT'">End break
    </label>
+ </div>
    <hr>
     <br>
     <div ng-show="warningAlert" class="alert alert-danger alert-dismissable">

@@ -10,6 +10,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
     if ($rootScope.userId==undefined){
       $location.path('/');
     }
+    $scope.action="In";
     $scope.warningAlert=0;
     var getVideoData = function getVideoData(x, y, w, h) {
        var hiddenCanvas = document.createElement('canvas');
@@ -143,7 +144,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
                                       }).then(function mySucces(response) {
-                                        alert(response);
+                                      //  alert(response);
                                         $location.path('/welcome');
                                         })
 

@@ -132,13 +132,14 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                       data: obj
                                       // data: obj
                                   }).then(function mySucces(result) {
+
                                     if (result.data["isIdentical"]===true){
-                                      var d='{"pId": "'+$rootScope.userId+'", "dateTime": "2017-06-02"}';
-                                      alert(d);
+                                      var json = $.param({pId: $rootScope.userId,dateTime: " "});
+
                                         $http({
-                                              method : "post",
+                                              method : "POST",
                                               url : 'http://localhost:80/putPresent.php',
-                                              data: d,
+                                              data: json,
 
                                   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 

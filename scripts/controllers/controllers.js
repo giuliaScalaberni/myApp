@@ -142,11 +142,12 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
                                       }).then(function mySucces(response) {
-                                          alert(response.data);
+                                        alert(response);
+                                        $location.path('/welcome');
                                         })
 
 
-                                    $location.path('/welcome');
+
                                   }
                                     else {
                                       $scope.myWelcome="User not identical. Please try again";

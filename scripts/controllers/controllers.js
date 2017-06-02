@@ -97,6 +97,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                               $rootScope.photos = $rootScope.photos || [];
                               data.context = {custom: {photo: $scope.title}};
                               $scope.f.result = data;
+
+                              $scope.f.progress = 0;
                               $rootScope.url=data.url;
                               var params = {
                                   // Request parameters
@@ -116,6 +118,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                 if (response.data.length==0) {
                                   $scope.myWelcome = "Unsuccessfully operation, please verify again! Make sure your snapshot is ok";
                                   $scope.warningAlert=1;
+
+                                  $scope.f.progress = 0;
                                 }
                                 else{
                                 alert("Good snap!");
@@ -135,7 +139,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                   }).then(function mySucces(result) {
 
                                     if (result.data["isIdentical"]===true){
-                                      var json = $.param({pId: $rootScope.userId, action: $scope.action});
+                                      $rootScope.action=$scope.action;
+                                      var json = $.param({pId: $rootScope.userId, action: $rootScope.action});
                                       $http({
                                         method : "POST",
                                         url : 'http://localhost:80/putPresent.php',
@@ -153,6 +158,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                     else {
                                       $scope.myWelcome="User not identical. Please try again";
                                       $scope.warningAlert=1;
+
+                                      $scope.f.progress = 0;
                                     }
                                     //alert($scope.myWelcome = result.data["isIdentical"]);
 
@@ -160,12 +167,16 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                   }, function myError(result) {
                                     $scope.myWelcome = result.data.error.code+": "+result.data.error.message;
                                       $scope.warningAlert=1;
+
+                                      $scope.f.progress = 0;
                                   });
 
 
                                 }}, function myError(response) {
                                   $scope.myWelcome = response.statusText;
                                   $scope.warningAlert=1;
+
+                                  $scope.f.progress = 0;
 
                                 });
 
@@ -177,6 +188,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                               //$scope.f.result = data;
                               $scope.myWelcome = $scope.f.result;
                               $scope.warningAlert=1;
+
+                              $scope.f.progress = 0;
 
                             });
 

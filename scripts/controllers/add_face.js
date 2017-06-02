@@ -104,6 +104,7 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                               $scope.f.result = data;
                               //$rootScope.photos.push(data);
                               $rootScope.url=data.url;
+
                               var params = {
                                   // Request parameters
                                   "personGroupId": $rootScope.groupId,
@@ -135,6 +136,7 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
 
                             }).error(function (data, status, headers, config) {
                               $scope.f.result = data;
+                              $scope.f.progress = 0;
                               alert($scope.f.result);
                             });
 

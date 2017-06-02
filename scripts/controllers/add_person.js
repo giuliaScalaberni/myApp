@@ -12,6 +12,9 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
   if ($rootScope.groupId==undefined){
     $location.path('/');
   }
+  $scope.goBack=function(){
+    window.history.back();
+  };
   $scope.createPerson=function(){
     var obj='{"name":"'+$('#name').val()+'", "userData":"'+$('#data').val()+'"}';
     $http({
@@ -34,7 +37,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
 
             }).then(function mySucces(ris) {
             //  alert(ris);
-          
+
               })
 
             $rootScope.userId=response.data.personId;

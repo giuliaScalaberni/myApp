@@ -10,6 +10,9 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
     if ($rootScope.userId==undefined){
       $location.path('/');
     }
+    $scope.goBack=function(){
+      window.history.back();
+    };
     $scope.action="In";
     $scope.warningAlert=0;
     var getVideoData = function getVideoData(x, y, w, h) {
@@ -97,7 +100,6 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                               $rootScope.photos = $rootScope.photos || [];
                               data.context = {custom: {photo: $scope.title}};
                               $scope.f.result = data;
-
                               $scope.f.progress = 0;
                               $rootScope.url=data.url;
                               var params = {

@@ -11,6 +11,9 @@
     var getPersonController = angular.module('getPersonController', []);
 getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location) {
 
+  $scope.goBack=function(){
+    window.history.back();
+  };
     var params = {
         // Request parameters
         "personGroupId": $rootScope.groupId,
@@ -60,7 +63,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           $location.path("/photos");
         };
 
-      
+
         $scope.delete=function(){
            $('#modalDelete').modal('hide');
            if ($scope.item=="photo"){

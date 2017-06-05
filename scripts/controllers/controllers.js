@@ -120,7 +120,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                 if (response.data.length==0) {
                                   $scope.myWelcome = "Unsuccessfully operation, please verify again! Make sure your snapshot is ok";
                                   $scope.warningAlert=1;
-
+                                  $scope.f.status = "";
                                   $scope.f.progress = 0;
                                 }
                                 else{
@@ -160,7 +160,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                     else {
                                       $scope.myWelcome="User not identical. Please try again";
                                       $scope.warningAlert=1;
-
+                                      $scope.f.status = "";
                                       $scope.f.progress = 0;
                                     }
                                     //alert($scope.myWelcome = result.data["isIdentical"]);
@@ -169,7 +169,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                   }, function myError(result) {
                                     $scope.myWelcome = result.data.error.code+": "+result.data.error.message;
                                       $scope.warningAlert=1;
-
+                                      $scope.f.status = "";
                                       $scope.f.progress = 0;
                                   });
 
@@ -177,7 +177,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                 }}, function myError(response) {
                                   $scope.myWelcome = response.statusText;
                                   $scope.warningAlert=1;
-
+                                  $scope.f.status = "";
                                   $scope.f.progress = 0;
 
                                 });

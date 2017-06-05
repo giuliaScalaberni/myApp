@@ -147,8 +147,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                         method : "POST",
                                         url : 'http://localhost:80/putPresent.php',
                                         data: json,
-                                        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-
+                                        //headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                                        headers :{'Content-Type':'application/json'}
                                       }).then(function mySucces(response) {
                                       //  alert(response);
                                         $location.path('/welcome');

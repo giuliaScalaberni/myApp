@@ -8,6 +8,9 @@
 </div>
 <div class="col-md-1"></div>
 <div class="col-md-10">
+  <div ng-show="warningInternet" class="alert alert-danger blink_me">
+    <strong>Attention!</strong> NO INTERNET CONNECTION DETECTED!
+  </div>
   <h1>PhotoEntry groups</h1>
   <button class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group">New Group</a></button>
   <div>

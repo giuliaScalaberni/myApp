@@ -22,7 +22,8 @@ angular.module('documentsApp')
         $scope.groups = response.data;
 
       }, function myError(response) {
-          alert("Error");
+          alert("Attention: NO INTERNET CONNECTION");
+          $scope.warningInternet=1;
       });
 
       $scope.findPeople=function(id){

@@ -1,14 +1,19 @@
-<h1>PhotoEntry Profile</h1>
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-
+<h1>PhotoEntry Profile</h1>
 <h3><u>User</u> {{faces.name}}</h3>
-<button class="btn btn-danger" ng-click="trashPerson()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
-<button class="btn btn-danger" ng-click="verifyPerson()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 <h4><u>Personal ID</u>  {{faces.personId}}</h4>
 <h4><u>More infos</u>  {{faces.userData}}</h4>
 <h4><u>Group ID</u>  {{groupId}}</h4>
 <hr>
-<button id="btnAddPhoto" class="btn btn-success" ng-click="addPhoto()">Add Photo</button>
+<div class="row  center">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <button class="btn btn-danger" ng-click="verifyPerson()"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></button>
+    <button id="btnAddPhoto" class="btn btn-success" ng-click="addPhoto()">Add Photo</button>
+    <button class="btn btn-danger" ng-click="trashPerson()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+  </div>
+<div class="col-md-4"></div>
+</div>
 <table class="table" >
   <thead><tr><th>Persisted Id</th><th></th></tr></thead>
   <tr ng-repeat="x in faces.persistedFaceIds"><td>{{x}}</td><td><button class="text-right btn btn-danger text-left"  ng-click="trashPhoto(x)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>

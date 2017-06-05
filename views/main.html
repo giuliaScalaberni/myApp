@@ -12,24 +12,29 @@
     <strong>Attention!</strong> NO INTERNET CONNECTION DETECTED!
   </div>
   <h1>PhotoEntry groups</h1>
-  <button class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group">New Group</a></button>
-  <div>
+  <button class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-briefcase"></span></a></button>
+
     <div class="list-group">
       <br>
       <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}}) <button class="text-right btn btn-danger text-left"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <hr>
     <div>
+      <div class="row" align="center">
+            <h2>{{groupId}}</h2>
+            <button ng-show="button" class="btn btn-info" id="btnAddPerson"><a ng-href="/#!/add-person"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span></a></button>
+</div>
+
       <div class="list-group">
+        <br>
         <a ng-repeat="person in people" ng-click="showPerson(person.personId)" class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
       </div>
       <div ng-show="warningAlert" class="alert alert-warning blink_me">
         <!--a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a-->
-        <strong>Warning!</strong> No people in this group (Id {{groupId}})
+        <strong>Warning!</strong> No people in this group
       </div>
-      <button ng-show="button" class="btn btn-info" id="btnAddPerson"><a ng-href="/#!/add-person">New Person</a></button>
     </div>
-  </div>
+
   <div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

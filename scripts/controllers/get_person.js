@@ -11,9 +11,14 @@
     var getPersonController = angular.module('getPersonController', []);
 getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location) {
 
+  if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
+  {
+    $location.path("/");
+  }
   $scope.goBack=function(){
     window.history.back();
   };
+
     var params = {
         // Request parameters
         "personGroupId": $rootScope.groupId,
@@ -71,7 +76,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           $location.path("/add");
         };
         $scope.verifyPerson=function(){
-          $rootScope.name=$scope.faces.name;
+          $rootScope.name=$scope.infos.name;
           $location.path("/photos");
         };
 

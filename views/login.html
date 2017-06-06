@@ -26,10 +26,22 @@
   <!-- JavaScript specific to this application that is not related to API
      calls -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
   <meta name="google-signin-client_id" content="354313137561-68rl4vjo8fgvbm0qdmnlsqq32cc32kkn.apps.googleusercontent.com"></meta>
 </head>
 <body>
-  <div id="gConnect">
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+<script>
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+</script>
+  <!--div id="gConnect">
     <div id="signin-button"></div>
   </div>
   <div id="authOps" style="display:none">
@@ -204,6 +216,6 @@ function startApp() {
   });
 }
 </script>
-<script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script-->
 </body>
 </html>

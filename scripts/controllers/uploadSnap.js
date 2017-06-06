@@ -1,4 +1,5 @@
 documentsApp.factory("uploadSnap", function uploadSnap(path) {
+  
   $('#modalUpload').modal('hide');
   $scope.f.upload = $upload.upload({
     url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
@@ -19,8 +20,14 @@ documentsApp.factory("uploadSnap", function uploadSnap(path) {
     //$rootScope.photos.push(data);
     $rootScope.url=data.url;
     //photoUrl.set(data);
+
+        $scope.f.progress = 0;
+        $scope.f.status = "";
      $location.path(path);
   }).error(function (data, status, headers, config) {
+
+    $scope.f.progress = 0;
+    $scope.f.status = "";
     $scope.f.result = data;
     alert($scope.f.result);
   });

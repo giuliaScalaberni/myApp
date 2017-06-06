@@ -1,8 +1,8 @@
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
 <h1>PhotoEntry Profile</h1>
-<h3><u>User</u> {{faces.name}}</h3>
-<h4><u>Personal ID</u>  {{faces.personId}}</h4>
-<h4><u>More infos</u>  {{faces.userData}}</h4>
+<h3><u>User</u> {{infos.name}}</h3>
+<h4><u>Personal ID</u>  {{infos.personId}}</h4>
+<h4><u>More infos</u>  {{infos.userData}}</h4>
 <h4><u>Group ID</u>  {{groupId}}</h4>
 <hr>
 <div class="row  center">
@@ -14,6 +14,7 @@
   </div>
 <div class="col-md-4"></div>
 </div>
+<br>
 <table class="table" >
   <thead><tr><th>Persisted Id</th><th>Snap date</th><th></th></tr></thead>
   <tr ng-repeat="x in datas"><td>{{x.faceId}}</td><td>{{x.data}}</td><td><button class="text-right btn btn-danger text-left"  ng-click="trashPhoto(x)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>

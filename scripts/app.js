@@ -25,6 +25,7 @@
     'addGroupController',
     'getPersonController',
     'addPersonController',
+    'loginController',
     //'uploadSnap'
 
 
@@ -67,6 +68,11 @@
        templateUrl: 'views/add-person.html',
        controller: 'addPersonCtrl',
      })
+     .when('/login', {
+       templateUrl: 'views/login.html',
+       controller: 'loginCtrl',
+     })
+
      .otherwise({
        redirectTo: '/'
      });

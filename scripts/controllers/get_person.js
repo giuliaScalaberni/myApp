@@ -41,19 +41,20 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
         }
         else{
             $scope.alert=0;
+            var json = $.param({personId: $rootScope.userId});
+            $http({
+              method : "POST",
+              url : 'http://localhost:80/getSnaps.php',
+              data: json,
+              headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+            }).then(function mySucces(ris) {
+              $scope.datas=ris.data;
+              })
         }
         $rootScope.name=response.data.name;
-        //get dei dati degli snap
-        var json = $.param({personId: $rootScope.userId});
-        $http({
-          method : "POST",
-          url : 'http://localhost:80/getSnaps.php',
-          data: json,
-          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
-        }).then(function mySucces(ris) {
-          $scope.datas=ris.data;
-          })
+
 
 
 

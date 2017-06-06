@@ -11,7 +11,11 @@ angular.module('documentsApp')
   .controller('MainCtrl', function ($scope, $http, $route, $rootScope, $location) {
     $scope.warningAlert = 0;
     $scope.button=0;
+    $scope.buttonPerson=0;
+    $scope.load=1;
+    $scope.loadPerson=1;
     $rootScope.groupId="";
+
     $http({
           method : "GET",
           url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups",
@@ -20,11 +24,16 @@ angular.module('documentsApp')
             'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
           },
       }).then(function mySucces(response) {
+        $scope.load=0;
         $scope.groups = response.data;
+        $scope.button=1;
+
 
       }, function myError(response) {
           alert("Attention: NO INTERNET CONNECTION");
           $scope.warningInternet=1;
+
+
       });
 
       $scope.findPeople=function(id){
@@ -38,21 +47,24 @@ angular.module('documentsApp')
               },
           }).then(function mySucces(response) {
 
+            $scope.buttonPerson=1;
+            $scope.loadPerson=0;
             if (response.data.length==0){
               $scope.people='';
               $scope.warningAlert=1;
+
               //alert("Warning: no user for this group");
             }
             else{
               $scope.warningAlert=0;
                 $scope.people='';
             //alert(response.data[0].name)
+
             $scope.people = response.data;
             }
-            $scope.button=1;
 
           }, function myError(response) {
-              $scope.button=0;
+              $scope.buttonPerson=0;
               alert("Error");
           });
 

@@ -10,7 +10,7 @@
 
     var getPersonController = angular.module('getPersonController', []);
 getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location) {
-
+$scope.getDatas=1;
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
 
@@ -34,6 +34,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
             'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
           },
       }).then(function mySucces(response) {
+        $scope.getDatas=0;
         $scope.infos=response.data;
         if (response.data.persistedFaceIds.length==0)
         {

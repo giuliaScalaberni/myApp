@@ -12,7 +12,6 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
       $location.path('/');
 
     }
-    $("#date").val(new Date());
 
     var getVideoData = function getVideoData(x, y, w, h) {
        var hiddenCanvas = document.createElement('canvas');
@@ -109,7 +108,6 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                                   // Request parameters
                                   "personGroupId": $rootScope.groupId,
                                   "personId":  $rootScope.userId,
-                                  "userData": $('#date').val(),
                               };
                               var obj='{"url":"'+$rootScope.url+'"}';
                               $http({
@@ -128,6 +126,18 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                                   $scope.successAlert=1;
                                   $scope.f.progress = 0;
                                   $scope.f.status = "";
+                                  var json = $.param({user: $rootScope.userId, face:response.data.persistedFaceId });
+
+                                  $http({
+                                    method : "POST",
+                                    url : 'http://localhost:80/putSnap.php',
+                                    data: json,
+                                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+                                  }).then(function mySucces(ris) {
+                                   //alert(ris);
+
+                                    })
 
                                 }, function myError(response) {
                                     $scope.myWelcome = response.data.error.code+": "+response.data.error.message;

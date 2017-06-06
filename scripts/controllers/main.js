@@ -11,6 +11,7 @@ angular.module('documentsApp')
   .controller('MainCtrl', function ($scope, $http, $route, $rootScope, $location) {
     $scope.warningAlert = 0;
     $scope.button=0;
+    $scope.buttonPerson=0;
     $scope.load=1;
     $rootScope.groupId="";
     $http({
@@ -45,18 +46,20 @@ angular.module('documentsApp')
             if (response.data.length==0){
               $scope.people='';
               $scope.warningAlert=1;
+
               //alert("Warning: no user for this group");
             }
             else{
               $scope.warningAlert=0;
                 $scope.people='';
             //alert(response.data[0].name)
+
             $scope.people = response.data;
             }
-            $scope.button=1;
+            $scope.buttonPerson=1;
 
           }, function myError(response) {
-              $scope.button=0;
+              $scope.buttonPerson=0;
               alert("Error");
           });
 

@@ -10,6 +10,7 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
 
     if ($rootScope.name==undefined){
       $location.path('/');
+      
 
     }
 

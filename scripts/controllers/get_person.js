@@ -47,6 +47,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         }).then(function mySucces(ris) {
+          $scope.datas=ris;
           alert(ris);
 
           })

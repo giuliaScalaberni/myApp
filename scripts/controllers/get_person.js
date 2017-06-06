@@ -41,10 +41,10 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
         var json = $.param({personId: $rootScope.userId});
 
         $http({
-          method : "GET",
+          method : "POST",
           url : 'http://localhost:80/getSnaps.php',
           data: json,
-          headers : { 'Content-Type': 'application/json' }
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         }).then(function mySucces(ris) {
           alert(ris);

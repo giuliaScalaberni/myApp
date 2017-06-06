@@ -18,7 +18,7 @@
   <thead><tr><th>Persisted Id</th><th></th></tr></thead>
   <tr ng-repeat="x in faces.persistedFaceIds"><td>{{x}}</td><td><button class="text-right btn btn-danger text-left"  ng-click="trashPhoto(x)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>
 </table>
-<p ng-repeat="data in datas">{{data}} </p>
+<p ng-repeat="data in datas">{{data}}</p>
 <div ng-show="alert" class="alert alert-warning blink_me">
   <strong>Warning!</strong> No photos for this person
 </div>

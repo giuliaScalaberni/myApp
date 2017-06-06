@@ -35,7 +35,7 @@
         <br>
         <a ng-repeat="person in people" ng-click="showPerson(person.personId)" class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
       </div>
-      <div ng-show="warningAlert" class="alert alert-warning blink_me">
+      <div ng-show="warningAlert" class="alert alert-warning">
         <!--a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a-->
         <strong>Warning!</strong> No people in this group
       </div>

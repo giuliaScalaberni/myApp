@@ -11,6 +11,7 @@ angular.module('documentsApp')
   .controller('MainCtrl', function ($scope, $http, $route, $rootScope, $location) {
     $scope.warningAlert = 0;
     $scope.button=0;
+    $scope.load=1;
     $rootScope.groupId="";
     $http({
           method : "GET",
@@ -20,11 +21,14 @@ angular.module('documentsApp')
             'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
           },
       }).then(function mySucces(response) {
+        $scope.load=0;
         $scope.groups = response.data;
+        $scope.button=1;
 
       }, function myError(response) {
           alert("Attention: NO INTERNET CONNECTION");
           $scope.warningInternet=1;
+
       });
 
       $scope.findPeople=function(id){

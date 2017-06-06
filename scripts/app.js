@@ -25,6 +25,7 @@
     'addGroupController',
     'getPersonController',
     'addPersonController',
+    'angularSpinkit',
     //'uploadSnap'
 
 

@@ -1,4 +1,4 @@
- <div class="jumbotron">
+ <!--div class="jumbotron">
   <h1>Hello Admin!</h1>
   <p class="lead">
 
@@ -6,14 +6,17 @@
     Another work day is going to start!
   </p>
   <p><a class="btn btn-lg btn-success" ng-href="/#!/photos">Login!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+</div-->
 <div class="col-md-1"></div>
 <div class="col-md-10">
-  <div ng-show="warningInternet" class="alert alert-danger blink_me">
+  <h1>PhotoEntry groups</h1>
+    <br>
+  <div ng-show="warningInternet" class="alert alert-danger">
+
     <strong>Attention!</strong> NO INTERNET CONNECTION DETECTED!
   </div>
-  <h1>PhotoEntry groups</h1>
-  <button class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-briefcase"></span></a></button>
+  <double-bounce-spinner ng-show="load"></double-bounce-spinner>
+  <button ng-show="button" class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-briefcase"></span></a></button>
 
     <div class="list-group">
       <br>
@@ -21,6 +24,8 @@
     </div>
     <hr>
     <div>
+
+<double-bounce-spinner ng-hide="load"></double-bounce-spinner>
       <div class="row" align="center">
             <h2>{{groupId}}</h2>
             <button ng-show="button" class="btn btn-info" id="btnAddPerson"><a ng-href="/#!/add-person"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span></a></button>

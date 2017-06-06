@@ -14,7 +14,9 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
   $scope.goBack=function(){
     window.history.back();
   };
-    var params = {
+
+  //GET FACES
+    /*var params = {
         // Request parameters
         "personGroupId": $rootScope.groupId,
         "personId":   $rootScope.userId
@@ -26,8 +28,16 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
             'Content-Type': 'application/json',
             'Ocp-Apim-Subscription-Key':'19ea017349b84f56aa12bf38a4b50756'
           },
-      }).then(function mySucces(response) {
-        if (response.data.persistedFaceIds.length==0)
+      })*/
+      var json = $.param({personId: $rootScope.userId});
+      $http({
+        method : "POST",
+        url : 'http://localhost:80/getSnaps.php',
+        data: json,
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+      }).then(function mySucces(ris) {
+        if (ris.data.length==0)
         {
           $scope.alert=1;
         }
@@ -35,29 +45,16 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
             $scope.alert=0;
         }
 
-        $scope.faces = response.data;
-        $rootScope.name=response.data.name;
-        //get dei dati degli snap
-        var json = $.param({personId: $rootScope.userId});
-
-        $http({
-          method : "POST",
-          url : 'http://localhost:80/getSnaps.php',
-          data: json,
-          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-
-        }).then(function mySucces(ris) {
-          $scope.datas=ris.data;
-          alert(ris);
-
-          })
+        $scope.datas=ris.data;
 
 
+        })
+/*function myError(response) {
+        //alert("No parameters to get a response");
+        $location.path("/");
+      });*/
 
-      }, function myError(response) {
-          //alert("No parameters to get a response");
-          $location.path("/");
-      });
+
 
       $scope.trashPhoto=function(pid){
           $scope.id=pid;

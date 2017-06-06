@@ -13,7 +13,9 @@ angular.module('documentsApp')
     $scope.button=0;
     $scope.buttonPerson=0;
     $scope.load=1;
+    $scope.loadPerson=1;
     $rootScope.groupId="";
+
     $http({
           method : "GET",
           url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups",
@@ -26,9 +28,11 @@ angular.module('documentsApp')
         $scope.groups = response.data;
         $scope.button=1;
 
+
       }, function myError(response) {
           alert("Attention: NO INTERNET CONNECTION");
           $scope.warningInternet=1;
+
 
       });
 
@@ -43,6 +47,8 @@ angular.module('documentsApp')
               },
           }).then(function mySucces(response) {
 
+            $scope.buttonPerson=1;
+            $scope.loadPerson=0;
             if (response.data.length==0){
               $scope.people='';
               $scope.warningAlert=1;
@@ -56,7 +62,6 @@ angular.module('documentsApp')
 
             $scope.people = response.data;
             }
-            $scope.buttonPerson=1;
 
           }, function myError(response) {
               $scope.buttonPerson=0;

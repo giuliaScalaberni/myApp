@@ -13,10 +13,12 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
 
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
+
     $location.path("/");
   }
   $scope.goBack=function(){
     window.history.back();
+    $rootScope.groupId="";
   };
 
     var params = {

@@ -11,6 +11,7 @@ angular.module('documentsApp')
   .controller('MainCtrl', function ($scope, $http, $route, $rootScope, $location) {
     $scope.warningAlert = 0;
     $scope.button=0;
+    $rootScope.groupId="";
     $http({
           method : "GET",
           url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups",

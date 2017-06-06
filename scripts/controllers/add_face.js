@@ -121,11 +121,14 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
                                     },
                                      data: obj
                                 }).then(function mySucces(response) {
-                                  $scope.warningAlert=0;
+
                                   $scope.myWelcome="Face added, id: "+response.data.persistedFaceId;
+
+                                  $scope.warningAlert=0;
                                   $scope.successAlert=1;
                                   $scope.f.progress = 0;
                                   $scope.f.status = "";
+
                                 }, function myError(response) {
                                     $scope.myWelcome = response.data.error.code+": "+response.data.error.message;
                                     $scope.warningAlert=1;

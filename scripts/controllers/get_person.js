@@ -34,8 +34,23 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
         else{
             $scope.alert=0;
         }
+
         $scope.faces = response.data;
         $rootScope.name=response.data.name;
+        //get dei dati degli snap
+        var json = $.param({personId: $rootScope.userId});
+
+        $http({
+          method : "GET",
+          url : 'http://localhost:80/getSnaps.php',
+          data: json,
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+        }).then(function mySucces(ris) {
+          alert(ris);
+
+          })
+
 
 
       }, function myError(response) {

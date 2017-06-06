@@ -10,9 +10,11 @@ addFaceController.controller('addFaceCtrl', ['$scope', '$rootScope', '$routePara
 
     if ($rootScope.name==undefined){
       $location.path('/');
-      
-
     }
+    $scope.goBack=function(){
+      window.history.back();
+      $rootScope.groupId="";
+    };
 
     var getVideoData = function getVideoData(x, y, w, h) {
        var hiddenCanvas = document.createElement('canvas');

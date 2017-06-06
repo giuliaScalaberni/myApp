@@ -9,6 +9,11 @@
  */
 var addGroupController = angular.module('addGroupController', []);
 addGroupController.controller('addGroupCtrl', function($scope,$rootScope, $http,$location) {
+  $scope.goBack=function(){
+    window.history.back();
+    $rootScope.groupId="";
+  };
+
   $scope.createGroup=function(){
     var obj='{"name":"'+$('#name').val()+'", "userData":"'+$('#data').val()+'"}';
     $http({

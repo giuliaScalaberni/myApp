@@ -44,7 +44,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           method : "GET",
           url : 'http://localhost:80/getSnaps.php',
           data: json,
-          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+          headers : { 'Content-Type': 'application/json' }
 
         }).then(function mySucces(ris) {
           alert(ris);

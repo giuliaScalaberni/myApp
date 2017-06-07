@@ -125,7 +125,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
                  }).then(function mySucces() {
                      $location.path("/");
                    }), function myError(r) {
-                       alert(r);
+                       alert("Error: "+r);
                    };
 
 

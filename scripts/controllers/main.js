@@ -91,6 +91,19 @@ angular.module('documentsApp')
              }
          }).then(function mySucces(response) {
             alert("Delete succeeded");
+
+              var json = $.param({groupId: $scope.gid});
+            $http({
+              method : "POST",
+              url : 'http://localhost:80/deleteGroup.php',
+              data: json,
+              headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+            }).then(function mySucces() {
+                $location.path("/");
+              }), function myError(r) {
+                  alert("Error: "+r);
+              };
             $scope.gid="";
             $scope.pid="";
             $route.reload();

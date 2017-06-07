@@ -99,6 +99,18 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
                      }
                  }).then(function mySucces(response) {
                     alert("Delete succeeded");
+                    var group=$.param({faceId: $scope.id});
+                    $http({
+                      method : "POST",
+                      url : 'http://localhost:80/deleteFace.php',
+                      data: group,
+                      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+                    }).then(function mySucces() {
+                        $location.path("/");
+                      }), function myError(r) {
+                          alert("Error: "+r);
+                      };
                     $scope.id="";
                     $route.reload();
                  }, function myError(response) {

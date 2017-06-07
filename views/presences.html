@@ -24,10 +24,18 @@
 <h3>SpeedEntry Last Ten Operations</h3>
 
 <!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner-->
-<table class="table" >
-  <thead><tr><th>Persisted Id</th><th>Snap date</th><th></th></tr></thead>
-  <tr ng-repeat="x in datas"><td>{{x}}</td><td>{{x.data}}</td><td></td></tr>
+<table class="table table-striped" at-table at-paginated at-list="list" at-config="config">
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td at-implicit at-sortable at-attribute="age" width="150" at-initial-sorting="asc">{{list.age}}</td>
+      <td at-implicit at-sortable at-attribute="name"  width="250"></td>
+      <td at-implicit at-sortable at-attribute="birthdate"></td>
+    </tr>
+  </tbody>
 </table>
+
+<at-pagination at-list="list" at-config="config"></at-pagination>
 <div ng-show="alert" class="alert alert-warning blink_me">
   <strong>Warning!</strong> No datas for this user
 </div>

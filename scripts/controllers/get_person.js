@@ -38,7 +38,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           },
       }).then(function mySucces(response) {
         $scope.getDatas=0;
-        $scope.infos=response.data;
+        $rootScope.infos=response.data;
         if (response.data.persistedFaceIds.length==0)
         {
           $scope.alert=1;

@@ -123,9 +123,10 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
                  }).then(function mySucces() {
-                   alert("ok");
                      $location.path("/");
-                   })
+                   }), function myError(r) {
+                       alert(r);
+                   };
 
 
               }, function myError(response) {

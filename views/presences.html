@@ -22,7 +22,14 @@
 
 <hr>
 <h3>SpeedEntry Last Ten Operations</h3>
-
+<table ng-table="vm.tableParams" class="table" show-filter="true">
+    <tr ng-repeat="user in $data">
+        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+            {{user.name}}</td>
+        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+            {{user.age}}</td>
+    </tr>
+</table>
 <!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner-->
 <table class="table table-striped" at-table at-paginated at-list="list" at-config="config">
   <thead></thead>

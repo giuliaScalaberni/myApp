@@ -52,7 +52,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
             }).then(function mySucces(ris) {
-              $scope.datas=ris.data;
+              $rootScope.datas=ris.data;
               })
         }
         $rootScope.name=response.data.name;

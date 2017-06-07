@@ -66,6 +66,10 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           $location.path("/");
       });
 
+      $scope.getPresents=function(){
+        $location.path("/");
+      };
+
       $scope.trashPhoto=function(pid){
           $scope.id=pid;
           $scope.item="photo";

@@ -28,7 +28,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
             data: obj
           })
           .then(function mySucces(response) {
-            alert("New person created! "+ response.data.personId);
+            //alert("New person created! "+ response.data.personId);
             var json = $.param({nome:$('#name').val() , pers: response.data.personId, group: $rootScope.groupId});
             $http({
               method : "POST",

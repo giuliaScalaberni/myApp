@@ -10,12 +10,15 @@
 
     var getPersonController = angular.module('getPersonController', []);
 getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location) {
-$scope.getDatas=1;
+
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
 
     $location.path("/");
   }
+  $scope.getDatas=1;
+
+  var json = $.param({personId: $rootScope.userId});
   $scope.goBack=function(){
     window.history.back();
     $rootScope.groupId="";
@@ -42,7 +45,6 @@ $scope.getDatas=1;
         }
         else{
             $scope.alert=0;
-            var json = $.param({personId: $rootScope.userId});
             $http({
               method : "POST",
               url : 'http://localhost:80/getSnaps.php',
@@ -114,7 +116,18 @@ $scope.getDatas=1;
                   }
               }).then(function mySucces(response) {
                  alert("Delete succeeded");
-                   $location.path("/");
+                 $http({
+                   method : "POST",
+                   url : 'http://localhost:80/deleteFaces.php',
+                   data: json,
+                   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+                 }).then(function mySucces() {
+                     $location.path("/");
+                   }), function myError(r) {
+                       alert(r);
+                   };
+
 
               }, function myError(response) {
                   alert("Not possible to delete");

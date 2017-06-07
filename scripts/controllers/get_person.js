@@ -67,7 +67,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
       });
 
       $scope.getPresents=function(){
-        $location.path("/");
+        $location.path("/presences");
       };
 
       $scope.trashPhoto=function(pid){

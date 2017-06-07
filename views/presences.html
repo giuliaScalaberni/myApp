@@ -1,0 +1,30 @@
+<button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+<h1>SpeedEntry Presences</h1>
+<h3><u>User</u> {{infos.name}}</h3>
+<h4><u>Personal ID</u>  {{infos.personId}}</h4>
+<h4><u>More infos</u>  {{infos.userData}}</h4>
+<h4><u>Group ID</u>  {{groupId}}</h4>
+
+
+<double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner>
+<hr>
+<div class="row  center">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <!--button class="btn btn-info" ng-disabled="alert" ng-click="verifyPerson()"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></button>
+    <button id="btnAddPhoto" class="btn btn-success" ng-click="addPhoto()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
+    <button class="btn btn-danger" ng-click="trashPerson()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+    <button class="btn btn-info" ng-click="getPresents()"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></button-->
+</div>
+<div class="col-md-4"></div>
+</div>
+<hr>
+<h3>SpeedEntry Checks</h3>
+<!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner-->
+<table class="table" >
+  <thead><tr><th>Persisted Id</th><th>Snap date</th><th></th></tr></thead>
+  <tr ng-repeat="x in datas"><td>{{x.faceId}}</td><td>{{x.data}}</td><td><button class="text-right btn btn-danger text-left"  ng-click="trashPhoto(x.faceId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td></tr>
+</table>
+<div ng-show="alert" class="alert alert-warning blink_me">
+  <strong>Warning!</strong> No datas for this user
+</div>

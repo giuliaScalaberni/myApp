@@ -99,10 +99,11 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
                      }
                  }).then(function mySucces(response) {
                     alert("Delete succeeded");
+                    var group=$.param({faceId: $scope.id});
                     $http({
                       method : "POST",
                       url : 'http://localhost:80/deleteFace.php',
-                      data: { faceId: $scope.id },
+                      data: group,
                       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
                     }).then(function mySucces() {

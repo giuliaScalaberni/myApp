@@ -29,8 +29,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
           })
           .then(function mySucces(response) {
             alert("New person created! "+ response.data.personId);
-            var json = $.param({nome:$('#name').val() , pers: response.data.personId});
-          
+            var json = $.param({nome:$('#name').val() , pers: response.data.personId, group: $rootScope.groupId});
             $http({
               method : "POST",
               url : 'http://localhost:80/putUser.php',
@@ -38,7 +37,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
             }).then(function mySucces(ris) {
-            //  alert(ris);
+            // alert(ris);
 
               })
 

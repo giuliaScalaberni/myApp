@@ -44,19 +44,21 @@
 </table-->
 <table ng-table="tableParams" class="table" show-filter="true">
     <tr ng-repeat="user in people">
-        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">{{user.name}}</td>
-        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">{{user.age}}</td>
+        <td title="'Azione'" filter="{ azione: 'text'}" sortable="'azione'">{{user.azione}}</td>
+        <td title="'Data_ora'" filter="{ data_ora: 'datetime'}" sortable="'data_ora'">{{user.data_ora}}</td>
     </tr>
 </table>
-<table ng-table="tableParams" class="table" show-filter="true">
+<!--table ng-table="tableParams" class="table" show-filter="true">
         <tbody>
           <tr ng-repeat="row in people">
-            <td data-title="'Name'"  sortable="'name'">{{ row.name }}</td>
-            <td data-title="'Age'"  sortable="'age'">{{ row.age }}</td>
+            <td data-title="'Azione'"  sortable="'azione'">{{ row.azione }}</td>
+            <td data-title="'Data_ora'"  sortable="'data_ora'">{{ row.data_ora }}</td>
           </tr>
         </tbody>
-      </table>
+      </table-->
+
 <!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner-->
+
 <!--table class="table table-striped" at-table at-paginated at-list="list" at-config="config">
   <thead></thead>
   <tbody>
@@ -66,9 +68,9 @@
       <td at-implicit at-sortable at-attribute="birthdate"></td>
     </tr>
   </tbody>
-</table-->
+</table>
 
-<at-pagination at-list="list" at-config="config"></at-pagination>
+<at-pagination at-list="list" at-config="config"></at-pagination-->
 <div ng-show="alert" class="alert alert-warning blink_me">
   <strong>Warning!</strong> No datas for this user
 </div>

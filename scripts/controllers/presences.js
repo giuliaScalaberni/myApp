@@ -58,9 +58,20 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
 }]);*/
 //var data = [{name: "Moroni", age: 50} /*,*/];
   var self = this;
+    var json = $.param({personId: $rootScope.userId});
+  $http({
+    method : "POST",
+    url : 'http://localhost:80/getPresence.php',
+    data: json,
+    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
+  }).then(function mySucces(ris) {
+    alert(ris.data);
+    $scope.people=ris.data;
 
-  $scope.people =[{
+    })
+
+  /*$scope.people =[{
            name: "Moroni",
            age: 44
        }, {
@@ -69,7 +80,7 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
        }, {
            name: "BBBBB",
            age: 50
-       }];
+       }];*/
     $scope.tableParams = new NgTableParams({page: 1, count: 10}, {data:   $scope.people});
           //  self.tableParams = new NgTableParams({}, { data: data});
 

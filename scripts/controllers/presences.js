@@ -68,9 +68,29 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
   }).then(function mySucces(ris) {
 
     $rootScope.people=ris.data;
-  alert($rootScope.people);
+  $scope.tableParams = new NgTableParams({page: 1, sorting: {
+    Nome: 'asc'
+  },
+  count: 10
 
-  });
+}, {
+  //total: $scope.data.length,
+  getData: function(params) {
+
+    var data = $rootScope.people;
+    data = params.filter() ? $filter('filter')(data, params.filter()) : data;
+    data = params.orderBy() ? $filter('orderBy')(data, params.orderBy()) : data;
+    params.total(data.length);
+    data = data.slice((params.page() - 1) * params.count(), params.page() * params.count());
+    return data;
+  }
+
+});
+
+  }), function myError(r) {
+      alert("Error "+r);
+  };
+
 
   /*$scope.people =[{
            name: "Moroni",
@@ -82,25 +102,7 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
            name: "BBBBB",
            age: 50
        }];*/
-    $scope.tableParams = new NgTableParams({page: 1, sorting: {
-      Nome: 'asc'
-    },
-    count: 10
 
-  }, {
-    //total: $scope.data.length,
-    getData: function(params) {
-
-    alert($rootScope.people);
-      var data = $rootScope.people;
-      data = params.filter() ? $filter('filter')(data, params.filter()) : data;
-      data = params.orderBy() ? $filter('orderBy')(data, params.orderBy()) : data;
-      params.total(data.length);
-      data = data.slice((params.page() - 1) * params.count(), params.page() * params.count());
-      return data;
-    }
-
-  });
 
   var sort = function(data, sort) {
     var defer = $q.defer();

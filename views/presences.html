@@ -1,11 +1,14 @@
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
 
 <h1>SpeedEntry Presences</h1>
-<h3><u>User</u> {{infos.name}}</h3>
-<h4><u>Personal ID</u>  {{infos.personId}}</h4>
-<h4><u>More infos</u>  {{infos.userData}}</h4>
-<h4><u>Group ID</u>  {{groupId}}</h4>
-
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h4><i>Name</i>  {{infos.name}}</h4>
+      <h4><i>Personal ID</i>  {{infos.personId}}</h4>
+      <h4><i>More infos</i>  {{infos.userData}}</h4>
+      <h4><i>Group ID</i> {{groupId}}</h4>
+    </div>
+  </div>
 
 <!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner>
 <hr-->
@@ -22,16 +25,39 @@
 
 <hr>
 <h3>SpeedEntry Last Ten Operations</h3>
-<table ng-table="vm.tableParams" class="table" show-filter="true">
-    <tr ng-repeat="user in $data">
-        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-            {{user.name}}</td>
-        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-            {{user.age}}</td>
+<!--table ng-table="demo.tableParams" class="table table-condensed table-bordered table-striped">
+        <tr ng-repeat="issue in $data">
+          <td data-title="'#'">
+            <a target="_blank" ng-href="{{issue.html_url}}">{{issue.number}}</a>
+          </td>
+          <td data-title="'Theme'">{{issue.title}}</td>
+          <td data-title="'Opened by'">
+            <a target="_blank" ng-href="{{issue.user.url}}">
+              <nobr><img width="16" height="16" ng-src="{{issue.user.avatar_url}}" /> {{issue.user.login}}
+              </nobr>
+            </a>
+          </td>
+          <td data-title="'Updated'">
+            <nobr>{{issue.updated_at | date:'medium'}}</nobr>
+          </td>
+        </tr>
+</table-->
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="user in data">
+        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">{{user.name}}</td>
+        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">{{user.age}}</td>
     </tr>
 </table>
+<table ng-table="tableParams" class="table" show-filter="true">
+        <tbody>
+          <tr ng-repeat="row in data">
+            <td data-title="'Name'"  sortable="'name'">{{ row.name }}</td>
+            <td data-title="'Age'"  sortable="'age'">{{ row.age }}</td>
+          </tr>
+        </tbody>
+      </table>
 <!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner-->
-<table class="table table-striped" at-table at-paginated at-list="list" at-config="config">
+<!--table class="table table-striped" at-table at-paginated at-list="list" at-config="config">
   <thead></thead>
   <tbody>
     <tr>
@@ -40,7 +66,7 @@
       <td at-implicit at-sortable at-attribute="birthdate"></td>
     </tr>
   </tbody>
-</table>
+</table-->
 
 <at-pagination at-list="list" at-config="config"></at-pagination>
 <div ng-show="alert" class="alert alert-warning blink_me">

@@ -1,10 +1,13 @@
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
 <h1>SpeedEntry Profile</h1>
-<h3><u>User</u> {{infos.name}}</h3>
-<h4><u>Personal ID</u>  {{infos.personId}}</h4>
-<h4><u>More infos</u>  {{infos.userData}}</h4>
-<h4><u>Group ID</u>  {{groupId}}</h4>
-
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h4><i>Name</i>  {{infos.name}}</h4>
+    <h4><i>Personal ID</i>  {{infos.personId}}</h4>
+    <h4><i>More infos</i>  {{infos.userData}}</h4>
+    <h4><i>Group ID</i> {{groupId}}</h4>
+  </div>
+</div>
 
 <double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner>
 <hr>
@@ -29,15 +32,6 @@
     <td>{{x.data}}</td>
     <td><button class="text-right btn btn-danger text-left"  ng-click="trashPhoto(x.faceId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
   </tr>
-</table>
-<table at-table at-list="datas">
- <thead><tr><th>Persisted Id</th><th>Snap date</th><th></th></tr></thead>
- <tbody>
-   <tr>
-     <td at-implicit at-attribute="datas.faceId"></td>
-     <td at-implicit at-attribute="datas.data"></td>
-   </tr>
- </tbody>
 </table>
 <div ng-show="alert" class="alert alert-warning blink_me">
   <strong>Warning!</strong> No photos for this person

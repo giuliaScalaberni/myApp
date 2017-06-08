@@ -45,7 +45,7 @@
 <table ng-table="tableParams" class="table" show-filter="true">
     <tr ng-repeat="user in people">
         <td title="'Azione'" filter="{ azione: 'text'}" sortable="'azione'">{{user.azione}}</td>
-        <td title="'Data_ora'" filter="{ data_ora: 'datetime'}" sortable="'data_ora'">{{user.data_ora}}</td>
+        <td title="'Data_ora'" sortable="'data_ora'">{{user.data_ora}}</td>
     </tr>
 </table>
 <!--table ng-table="tableParams" class="table" show-filter="true">

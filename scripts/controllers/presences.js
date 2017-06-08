@@ -60,17 +60,17 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
   var self = this;
 
 
-  var data =[{
+  $scope.people =[{
            name: "Moroni",
-           age: 50
+           age: 44
        }, {
-           name: "Moroni",
-           age: 50
+           name: "AAAA",
+           age: 23
        }, {
-           name: "Moroni",
+           name: "BBBBB",
            age: 50
        }];
-    $scope.tableParams = new NgTableParams({page: 1, count: 10}, {data: data});
+    $scope.tableParams = new NgTableParams({page: 1, count: 10}, {data:   $scope.people});
           //  self.tableParams = new NgTableParams({}, { data: data});
 
 

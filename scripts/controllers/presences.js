@@ -1,5 +1,7 @@
 var presencesController = angular.module('presencesController', []);
+
 presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http', '$route', '$location','$filter', function($scope,$rootScope, $http, $route, $location,$filter) {
+
 
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
@@ -31,36 +33,7 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
   };
 
 
-    /*$scope.tableParams = new NgTableParams({page: 1, sorting: {
-      Nome: 'asc'
-    },
-    count: 10
 
-  }, {
-    //total: $scope.data.length,
-    getData: function(params) {
-
-    alert($rootScope.people);
-      var data = $rootScope.people;
-      alert (data);
-      data = params.filter() ? $filter('filter')(data, params.filter()) : data;
-      data = params.orderBy() ? $filter('orderBy')(data, params.orderBy()) : data;
-      params.total(data.length);
-      data = data.slice((params.page() - 1) * params.count(), params.page() * params.count());
-      return data;
-    }
-
-  });
-
-  var sort = function(data, sort) {
-    var defer = $q.defer();
-    if (sort) {
-
-    }
-    defer.resolve(data);
-    return defer.promise;
-  };*/
-          //  self.tableParams = new NgTableParams({}, { data: data});
 
 
 }]);

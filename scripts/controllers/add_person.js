@@ -16,7 +16,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
     window.history.back();
   };
   $scope.createPerson=function(){
-    var obj='{"name":"'+$('#name').val()+'", "userData":"'+$('#data').val()+', "email":"'+$('#email').val()+'"}';
+    var obj='{"name":"'+$('#name').val()+'", "userData":"'+$('#data').val()+'"}';
 
     $http({
             method : "POST",
@@ -29,7 +29,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
           })
           .then(function mySucces(response) {
             //alert("New person created! "+ response.data.personId);
-            var json = $.param({nome:$('#name').val() , pers: response.data.personId, group: $rootScope.groupId});
+            var json = $.param({nome:$('#name').val() , pers: response.data.personId, group: $rootScope.groupId, email:$('#email').val()});
             $http({
               method : "POST",
               url : 'http://localhost:80/putUser.php',

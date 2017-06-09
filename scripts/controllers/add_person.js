@@ -16,7 +16,7 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
     window.history.back();
   };
   $scope.createPerson=function(){
-    var obj='{"name":"'+$('#name').val()+'", "userData":"'+$('#data').val()+'"}';
+    var obj='{"name":"'+$('#name').val()+'", "userData":"'+$('#data').val()+', "email":"'+$('#email').val()+'"}';
 
     $http({
             method : "POST",

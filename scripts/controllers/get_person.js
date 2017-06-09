@@ -9,7 +9,7 @@
  */
 
     var getPersonController = angular.module('getPersonController', []);
-getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location) {
+getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location,$log) {
 
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {

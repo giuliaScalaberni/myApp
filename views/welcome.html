@@ -1,1 +1,50 @@
 <h2> {{action}} SUCCEEDED</h2>
+
+<button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+<h1>SpeedEntry Profile</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h4><i>Name</i>  {{infos.name}}</h4>
+    <h4><i>Personal ID</i>  {{infos.personId}}</h4>
+    <h4><i>More infos</i>  {{infos.userData}}</h4>
+    <h4><i>Group ID</i> {{groupId}}</h4>
+  </div>
+</div>
+
+<h3>SpeedEntry Today's Actions</h3>
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search by action" ng-model="searchData">
+      </div>
+    </div>
+  </form>
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          <a href="" ng-click="sortType = 'data_ora'; sortReverse = !sortReverse">
+            Date time
+            <span ng-show="sortType == 'data_ora' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'data_ora' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'azione'; sortReverse = !sortReverse">
+          Action
+            <span ng-show="sortType == 'azione' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'azione' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchData">
+        <td>{{ user.data_ora }}</td>
+        <td>{{ user.azione }}</td>
+      </tr>
+    </tbody>
+
+  </table>

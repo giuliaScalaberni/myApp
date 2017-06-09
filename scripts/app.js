@@ -26,6 +26,8 @@
     'getPersonController',
     'addPersonController',
     'loginController',
+    'angularSpinkit',
+    'presencesController',
     //'uploadSnap'
 
 
@@ -72,7 +74,10 @@
        templateUrl: 'views/login.html',
        controller: 'loginCtrl',
      })
-
+     .when('/presences', {
+       templateUrl: 'views/presences.html',
+       controller: 'presencesCtrl',
+     })
      .otherwise({
        redirectTo: '/'
      });

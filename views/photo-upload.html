@@ -1,24 +1,24 @@
 <div id="direct_upload"    ng-model="f"    ng-multiple="true">
 
   <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-    <h1>PhotoEntry Verify</h1>
+    <h1>SpeedEntry Verify</h1>
     <h3><u>User</u> {{name}}</h3>
     <hr>
     <div ng-init="action='In'">
     <label class="radio-inline">
-     <input type="radio" ng-model="action" ng-value="'In'" checked="checked"><span class="glyphicon glyphicon-log-in"></span> Speed entry
+     <input type="radio" ng-model="action" ng-value="'In'" checked="checked"><span class="glyphicon glyphicon-log-in"></span> SpeedEntry
    </label>
    <label class="radio-inline">
-     <input type="radio" ng-model="action" ng-value="'Out'"><span class="glyphicon glyphicon-log-out"></span> Speed exit
+     <input type="radio" ng-model="action" ng-value="'Out'"><span class="glyphicon glyphicon-log-out"></span> SpeedExit
    </label>
 
  </div>
  <div>
    <label class="radio-inline">
-     <input type="radio" ng-model="action" ng-value="'Pause IN'"><span class="glyphicon glyphicon-pause"></span> Speed break start
+     <input type="radio" ng-model="action" ng-value="'Pause IN'"><span class="glyphicon glyphicon-pause"></span> SpeedBreakStart
    </label>
    <label class="radio-inline">
-     <input type="radio" ng-model="action" ng-value="'Pause OUT'"><span class="glyphicon glyphicon-play"></span> Speed break end
+     <input type="radio" ng-model="action" ng-value="'Pause OUT'"><span class="glyphicon glyphicon-play"></span> SpeedBreakEnd
       </label>
  </div>
    <hr>

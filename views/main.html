@@ -1,27 +1,32 @@
 <div class="col-md-1"></div>
 <div class="col-md-10">
-  <div ng-show="warningInternet" class="alert alert-danger blink_me">
+  <h1>SpeedEntry groups</h1>
+    <br>
+  <div ng-show="warningInternet" class="alert alert-danger">
+
     <strong>Attention!</strong> NO INTERNET CONNECTION DETECTED!
   </div>
-  <h1>PhotoEntry groups</h1>
-  <button class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-briefcase"></span></a></button>
+  <double-bounce-spinner ng-show="load"></double-bounce-spinner>
+  <button ng-show="button" class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-briefcase"></span></a></button>
 
     <div class="list-group">
       <br>
-      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}}) <button class="text-right btn btn-danger text-left"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+      <a ng-repeat="group in groups" href="" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}})  <button class="btn btn-xs btn-danger pull-right"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <hr>
     <div>
+
+<double-bounce-spinner ng-show="loadPerson"></double-bounce-spinner>
       <div class="row" align="center">
             <h2>{{groupId}}</h2>
-            <button ng-show="button" class="btn btn-info" id="btnAddPerson"><a ng-href="/#!/add-person"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span></a></button>
+            <button ng-show="buttonPerson" class="btn btn-info" id="btnAddPerson"><a ng-href="/#!/add-person"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span></a></button>
 </div>
 
       <div class="list-group">
         <br>
-        <a ng-repeat="person in people" ng-click="showPerson(person.personId)" class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
+        <a ng-repeat="person in people" href="" ng-click="showPerson(person.personId)" class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
       </div>
-      <div ng-show="warningAlert" class="alert alert-warning blink_me">
+      <div ng-show="warningAlert" class="alert alert-warning">
         <!--a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a-->
         <strong>Warning!</strong> No people in this group
       </div>

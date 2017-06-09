@@ -1,0 +1,66 @@
+<button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+
+<h1>SpeedEntry Presences</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h4><i>Name</i>  {{infos.name}}</h4>
+      <h4><i>Personal ID</i>  {{infos.personId}}</h4>
+      <h4><i>More infos</i>  {{infos.userData}}</h4>
+      <h4><i>Group ID</i> {{groupId}}</h4>
+    </div>
+  </div>
+
+<!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner>
+<hr-->
+<div class="row  center">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <!--button class="btn btn-info" ng-disabled="alert" ng-click="verifyPerson()"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></button>
+    <button id="btnAddPhoto" class="btn btn-success" ng-click="addPhoto()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
+    <button class="btn btn-danger" ng-click="trashPerson()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+    <button class="btn btn-info" ng-click="getPresents()"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></button-->
+</div>
+<div class="col-md-4"></div>
+</div>
+
+<hr>
+<h3>SpeedEntry Actions</h3>
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search by Date time" ng-model="searchData">
+      </div>
+    </div>
+  </form>
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          <a href="" ng-click="sortType = 'data_ora'; sortReverse = !sortReverse">
+            Date time
+            <span ng-show="sortType == 'data_ora' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'data_ora' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'azione'; sortReverse = !sortReverse">
+          Action
+            <span ng-show="sortType == 'azione' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'azione' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchData">
+        <td>{{ user.data_ora }}</td>
+        <td>{{ user.azione }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+<div ng-show="alert" class="alert alert-warning blink_me">
+  <strong>Warning!</strong> No datas for this user
+</div>

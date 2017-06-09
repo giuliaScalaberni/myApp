@@ -143,19 +143,16 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
                                     if (result.data["isIdentical"]===true){
                                       $rootScope.action=$scope.action;
                                       var json = $.param({pId: $rootScope.userId, action: $rootScope.action});
+
                                       $http({
                                         method : "POST",
                                         url : 'http://localhost:80/putPresent.php',
                                         data: json,
-                                        //headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-                                        headers :{'Content-Type':'application/json'}
+                                        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                                       }).then(function mySucces(response) {
                                       //  alert(response);
                                         $location.path('/welcome');
                                         })
-
-
-
                                   }
                                     else {
                                       $scope.myWelcome="User not identical. Please try again";

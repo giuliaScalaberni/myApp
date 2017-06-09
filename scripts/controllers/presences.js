@@ -1,5 +1,5 @@
 var presencesController = angular.module('presencesController', []);
-presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http', '$route', '$location','$filter','NgTableParams', function($scope,$rootScope, $http, $route, $location,$filter,NgTableParams,IssueService) {
+presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http', '$route', '$location','$filter', function($scope,$rootScope, $http, $route, $location,$filter) {
 
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
@@ -9,6 +9,9 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
   $scope.goBack=function(){
     window.history.back();
   };
+  $scope.sortType     = 'data_ora';
+  $scope.sortReverse  = false;
+  $scope.searchData   = '';
   var self = this;
     var json = $.param({personId: $rootScope.userId});
   $http({
@@ -21,20 +24,7 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
 
 
   $scope.users=ris.data;
-  $scope.usersTable = new NgTableParams({
 
-  page: 1,
-  count: 5
-  }, {
-  total: $scope.users.length,
-  getData: function ($defer, params) {
-  $scope.data = params.sorting() ? $filter('orderBy')($scope.users, params.orderBy()) : $scope.users;
-  $scope.data = params.filter() ? $filter('filter')($scope.users, params.filter()) : $scope.users;
-  $scope.data = $scope.data.slice((params.page() - 1) * params.count(), params.page() * params.count());
-  $defer.resolve($scope.data);
-  }
-  });
-  $scope.params.settings().$scope = $scope;
 
   }), function myError(r) {
       alert("Error: "+r);

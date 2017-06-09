@@ -27,7 +27,7 @@
     'addPersonController',
     'angularSpinkit',
     'presencesController',
-    'ngTable',
+  
     //'uploadSnap'
 
 

@@ -25,52 +25,43 @@
 
 <hr>
 <h3>SpeedEntry Last Ten Operations</h3>
-<!--table ng-table="demo.tableParams" class="table table-condensed table-bordered table-striped">
-        <tr ng-repeat="issue in $data">
-          <td data-title="'#'">
-            <a target="_blank" ng-href="{{issue.html_url}}">{{issue.number}}</a>
-          </td>
-          <td data-title="'Theme'">{{issue.title}}</td>
-          <td data-title="'Opened by'">
-            <a target="_blank" ng-href="{{issue.user.url}}">
-              <nobr><img width="16" height="16" ng-src="{{issue.user.avatar_url}}" /> {{issue.user.login}}
-              </nobr>
-            </a>
-          </td>
-          <td data-title="'Updated'">
-            <nobr>{{issue.updated_at | date:'medium'}}</nobr>
-          </td>
-        </tr>
-</table-->
-<table ng-table ="usersTable" show-filter=true class="table table-bordered table-striped">
-    <tr ng-repeat="user in users">
-        <td data-title="'Azione'" filter="{ 'azione': 'text'}" sortable="'azione'">{{user.azione}}</td>
-        <td data-title="'Data_ora'" sortable="'data_ora'">{{user.data_ora}}</td>
-    </tr>
-</table>
-<!--table ng-table="tableParams" class="table" show-filter="true">
-        <tbody>
-          <tr ng-repeat="row in people">
-            <td data-title="'Azione'"  sortable="'azione'">{{ row.azione }}</td>
-            <td data-title="'Data_ora'"  sortable="'data_ora'">{{ row.data_ora }}</td>
-          </tr>
-        </tbody>
-      </table-->
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search da date time" ng-model="searchData">
+      </div>
+    </div>
+  </form>
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          <a href="" ng-click="sortType = 'data_ora'; sortReverse = !sortReverse">
+            Date time
+            <span ng-show="sortType == 'data_ora' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'data_ora' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'azione'; sortReverse = !sortReverse">
+          Action
+            <span ng-show="sortType == 'azione' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'azione' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+      </tr>
+    </thead>
 
-<!--double-bounce-spinner align="center" ng-show="getDatas"></double-bounce-spinner-->
+    <tbody>
+      <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchData">
+        <td>{{ user.data_ora }}</td>
+        <td>{{ user.azione }}</td>
+      </tr>
+    </tbody>
 
-<!--table class="table table-striped" at-table at-paginated at-list="list" at-config="config">
-  <thead></thead>
-  <tbody>
-    <tr>
-      <td at-implicit at-sortable at-attribute="age" width="150" at-initial-sorting="asc">{{list.age}}</td>
-      <td at-implicit at-sortable at-attribute="name"  width="250"></td>
-      <td at-implicit at-sortable at-attribute="birthdate"></td>
-    </tr>
-  </tbody>
-</table>
+  </table>
 
-<at-pagination at-list="list" at-config="config"></at-pagination-->
 <div ng-show="alert" class="alert alert-warning blink_me">
   <strong>Warning!</strong> No datas for this user
 </div>

@@ -112,12 +112,24 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
                       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
                     }).then(function mySucces() {
-                        $location.path("/");
+
+                        //$location.path("/");
+                        $http({
+                          method : "POST",
+                          url : 'http://localhost:80/getSnaps.php',
+                          data: json,
+                          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+                        }).then(function mySucces(ris) {
+                          $rootScope.datas=ris.data;
+                          if(ris.data.lenght==undefined)
+                            $scope.alert=1;
+                        });
+
                       }), function myError(r) {
                           alert("Error: "+r);
                       };
                     $scope.id="";
-                    $route.reload();
                  }, function myError(response) {
                      alert("Not possible to delete");
                  });
@@ -141,6 +153,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
 
                  }).then(function mySucces() {
                      $location.path("/");
+
                    }), function myError(r) {
                        alert("Error: "+r);
                    };

@@ -23,7 +23,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
     window.history.back();
     $rootScope.groupId="";
   };
-  
+
 
     var params = {
         // Request parameters

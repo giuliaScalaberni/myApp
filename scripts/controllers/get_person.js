@@ -9,7 +9,7 @@
  */
 
     var getPersonController = angular.module('getPersonController', []);
-getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location) {
+getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $http, $route, $location,$log) {
 
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
@@ -19,6 +19,8 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
   $scope.getDatas=1;
 
   var json = $.param({personId: $rootScope.userId});
+
+
   $scope.goBack=function(){
     window.history.back();
     $rootScope.groupId="";
@@ -40,6 +42,15 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
       }).then(function mySucces(response) {
         $scope.getDatas=0;
         $rootScope.infos=response.data;
+        $http({
+          method : "POST",
+          url : 'http://localhost:80/getUser.php',
+          data: json,
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+        }).then(function mySucces(email) {
+          $rootScope.email=email.data[0].email;
+        });
         if (response.data.persistedFaceIds.length==0)
         {
           $scope.alert=1;
@@ -54,7 +65,8 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
 
             }).then(function mySucces(ris) {
               $rootScope.datas=ris.data;
-              })
+
+                })
         }
         $rootScope.name=response.data.name;
 

@@ -1,8 +1,4 @@
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-<div ng-show="successAlert" class="alert alert-success">
-  <strong>Successfully operation!</strong>
-</div>
-
 <h1>SpeedEntry Profile</h1>
 <div class="panel panel-default">
   <div class="panel-body">
@@ -12,6 +8,11 @@
     <h4><i>Group ID</i> {{groupId}}</h4>
   </div>
 </div>
+
+<div ng-show="successAlert" class="alert alert-success">
+  <strong>Successfully operation! </strong>Welcome to SpeedEntry. You have just registered action {{action}}
+</div>
+
 
 <h3>SpeedEntry Today's Actions</h3>
 <form>

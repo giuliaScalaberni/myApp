@@ -24,6 +24,7 @@ $http({
 
 
 $scope.users=ris.data;
+  $scope.successAlert=1;
 
 
 }), function myError(r) {

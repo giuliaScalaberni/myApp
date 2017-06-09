@@ -1,6 +1,9 @@
-<h2> {{action}} SUCCEEDED</h2>
-
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+<div ng-show="successAlert" class="alert alert-success">
+    <button type='button' class='close' data-dismiss='alert'>×</button>
+  <strong>Successfully operation!</strong> Action <h5><strong>{{action}}<striong></h5> registered
+</div>
+
 <h1>SpeedEntry Profile</h1>
 <div class="panel panel-default">
   <div class="panel-body">

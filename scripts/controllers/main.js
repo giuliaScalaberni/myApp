@@ -15,6 +15,7 @@ angular.module('documentsApp')
     $scope.load=1;
     $scope.loadPerson=1;
     $rootScope.groupId="";
+    $rootScope.datas="";
 
     $http({
           method : "GET",

@@ -9,7 +9,7 @@
 </div-->
 <div class="col-md-1"></div>
 <div class="col-md-10">
-  <h1>PhotoEntry groups</h1>
+  <h1>SpeedEntry groups</h1>
     <br>
   <div ng-show="warningInternet" class="alert alert-danger">
 
@@ -20,7 +20,7 @@
 
     <div class="list-group">
       <br>
-      <a ng-repeat="group in groups" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}})  <button class="btn btn-xs btn-danger pull-right"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
+      <a ng-repeat="group in groups" href="" ng-click="findPeople(group.personGroupId)" class="list-group-item" id="{{group.personGroupId}}">{{group.name}} ({{group.personGroupId}})  <button class="btn btn-xs btn-danger pull-right"  ng-click="trash(group.personGroupId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></a>
     </div>
     <hr>
     <div>
@@ -33,7 +33,7 @@
 
       <div class="list-group">
         <br>
-        <a ng-repeat="person in people" ng-click="showPerson(person.personId)" class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
+        <a ng-repeat="person in people" href="" ng-click="showPerson(person.personId)" class="list-group-item" id="{{person.personId}}">{{person.name}} ({{person.personId}})</a>
       </div>
       <div ng-show="warningAlert" class="alert alert-warning">
         <!--a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a-->

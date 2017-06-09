@@ -23,6 +23,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
     window.history.back();
     $rootScope.groupId="";
   };
+  
 
     var params = {
         // Request parameters
@@ -38,7 +39,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           },
       }).then(function mySucces(response) {
         $scope.getDatas=0;
-        $scope.infos=response.data;
+        $rootScope.infos=response.data;
         if (response.data.persistedFaceIds.length==0)
         {
           $scope.alert=1;
@@ -52,7 +53,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
             }).then(function mySucces(ris) {
-              $scope.datas=ris.data;
+              $rootScope.datas=ris.data;
               })
         }
         $rootScope.name=response.data.name;
@@ -65,6 +66,10 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           //alert("No parameters to get a response");
           $location.path("/");
       });
+
+      $scope.getPresents=function(){
+        $location.path("/presences");
+      };
 
       $scope.trashPhoto=function(pid){
           $scope.id=pid;

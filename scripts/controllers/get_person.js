@@ -49,7 +49,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         }).then(function mySucces(email) {
-          $rootScope.email=email.data.email;
+          $rootScope.email=email.data[0].email;
         });
         if (response.data.persistedFaceIds.length==0)
         {

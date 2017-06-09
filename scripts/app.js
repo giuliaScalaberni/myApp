@@ -25,9 +25,9 @@
     'addGroupController',
     'getPersonController',
     'addPersonController',
+    'loginController',
     'angularSpinkit',
     'presencesController',
-  
     //'uploadSnap'
 
 
@@ -69,6 +69,10 @@
      .when('/add-person', {
        templateUrl: 'views/add-person.html',
        controller: 'addPersonCtrl',
+     })
+     .when('/login', {
+       templateUrl: 'views/login.html',
+       controller: 'loginCtrl',
      })
      .when('/presences', {
        templateUrl: 'views/presences.html',

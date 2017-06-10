@@ -8,7 +8,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location,$http, $upload, cloudinary) {
     if ($rootScope.email==undefined){
-      $location.path('/');
+      $location.path('/login');
     }
     var email = $.param({email: $rootScope.email});
     $http({
@@ -19,6 +19,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
 
     }).then(function mySucces(ris) {
       $scope.ris=ris.data[0];
+      $rootScope.userId=$scope.ris.persistedId;
+      $rootScope.groupId=$scope.ris.groupId;
     });
     $scope.goBack=function(){
       window.history.back();

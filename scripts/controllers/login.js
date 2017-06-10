@@ -17,15 +17,16 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
-    $rootScope.mail=profile.getEmail();
+    $rootScope.email=profile.getEmail();
     $rootScope.image=profile.getImageUrl();
-    alert($rootScope.mail);
     $scope.login=true;
-    if (profile.getEmail()=="scalaberni.giulia@gmail.com")
+    if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
 
-      alert("giulia");
+
+
+window.location.href = "http://localhost:9000";}
     else {
-      alert("no admin");
+    window.location.href = "http://localhost:9000/#!/photos"
     }
   };
 

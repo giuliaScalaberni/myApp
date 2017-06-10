@@ -7,7 +7,7 @@ var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUplo
 photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$http','Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location,$http, $upload, cloudinary) {
-    if ($rootScope.userId==undefined){
+    if ($rootScope.email==undefined){
       $location.path('/');
     }
     $scope.goBack=function(){

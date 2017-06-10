@@ -1,1 +1,54 @@
 <p>OLD users</p>
+<h3>SpeedEntry Old Users</h3>
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchData">
+      </div>
+    </div>
+  </form>
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          <a href="" ng-click="sortType = 'nome'; sortReverse = !sortReverse">
+            Name
+            <span ng-show="sortType == 'nome' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'nome' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'email'; sortReverse = !sortReverse">
+          Email
+            <span ng-show="sortType == 'email' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'email' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'persistedId'; sortReverse = !sortReverse">
+          Personal Id
+            <span ng-show="sortType == 'persistedId' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'persistedId' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'groupId'; sortReverse = !sortReverse">
+          Group Id
+            <span ng-show="sortType == 'groupId' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'groupId' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="user in oldUsers | orderBy:sortType:sortReverse | filter:searchData">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.persistedId }}</td>
+        <td>{{ user.groupId }}</td>
+      </tr>
+    </tbody>
+
+  </table>

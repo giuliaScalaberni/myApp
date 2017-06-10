@@ -11,21 +11,18 @@ oldUsersController.controller('oldUsersCtrl', ['$scope','$rootScope', '$http', '
   $scope.goBack=function(){
     window.history.back();
   };
-  $scope.sortType     = 'data_ora';
+  $scope.sortType     = 'nome';
   $scope.sortReverse  = false;
   $scope.searchData   = '';
   var self = this;
-    var json = $.param({personId: $rootScope.userId});
   $http({
-    method : "POST",
-    url : 'http://localhost:80/getPresence.php',
-    data: json,
+    method : "GET",
+    url : 'http://localhost:80/getOldUsers.php',
     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
   }).then(function mySucces(ris) {
 
-
-  $scope.users=ris.data;
+  $scope.oldUsers=ris.data;
 
 
   }), function myError(r) {

@@ -29,6 +29,11 @@ oldUsersController.controller('oldUsersCtrl', ['$scope','$rootScope', '$http', '
       alert("Error: "+r);
   };
 
+  $scope.goBack=function(){
+    window.history.back();
+    $rootScope.groupId="";
+  };
+
 
 
 

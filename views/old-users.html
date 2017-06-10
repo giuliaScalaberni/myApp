@@ -1,4 +1,4 @@
-<p>OLD users</p>
+<button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
 <h3>SpeedEntry Old Users</h3>
 <form>
     <div class="form-group">
@@ -39,6 +39,8 @@
             <span ng-show="sortType == 'groupId' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
           </a>
         </td>
+        <td>
+        </td>
       </tr>
     </thead>
 
@@ -48,6 +50,7 @@
         <td>{{ user.email }}</td>
         <td>{{ user.persistedId }}</td>
         <td>{{ user.groupId }}</td>
+        <td><button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button></td>
       </tr>
     </tbody>
 

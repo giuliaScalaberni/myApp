@@ -33,7 +33,10 @@ oldUsersController.controller('oldUsersCtrl', ['$scope','$rootScope', '$http', '
     window.history.back();
     $rootScope.groupId="";
   };
+  $scope.moreInfos=function(pid){
+      $('#modalInfos').modal('show');
 
+    };
 
 
 

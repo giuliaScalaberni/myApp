@@ -1,5 +1,5 @@
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-<h3>SpeedEntry Old Users</h3>
+<h1>SpeedEntry Old Users</h1>
 <form>
     <div class="form-group">
       <div class="input-group">
@@ -50,8 +50,27 @@
         <td>{{ user.email }}</td>
         <td>{{ user.persistedId }}</td>
         <td>{{ user.groupId }}</td>
-        <td><button ng-click="" class="btn btn-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></button></td>
+        <td><button ng-click="moreInfos()" class="btn btn-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true" id="{{user.persistedId}}"></span></button></td>
       </tr>
     </tbody>
 
   </table>
+
+  <div id="modalInfos" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete</h4>
+        </div>
+        <div class="modal-body">
+          <p>Sure to delete that?</p>
+          <h4><b>ID</b> {{id}}</h4>
+          <hr>
+          <i>REMEBER: all infos about this element will also be deleted</i>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>

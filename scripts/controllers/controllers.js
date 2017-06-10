@@ -18,7 +18,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
     }).then(function mySucces(ris) {
-      $scope.ris=ris.data[0];
+      $rootScope.ris=ris.data[0];
       $rootScope.userId=$scope.ris.persistedId;
       $rootScope.groupId=$scope.ris.groupId;
     });

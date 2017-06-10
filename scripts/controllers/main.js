@@ -16,11 +16,7 @@ angular.module('documentsApp')
     $scope.loadPerson=1;
     $rootScope.groupId="";
     $rootScope.datas="";
-    if ( $rootScope.email != "scalaberni.giulia@gmail.com")
-    {
-
-      $location.path("/login");
-    }
+  
     $http({
           method : "GET",
           url : "https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups",

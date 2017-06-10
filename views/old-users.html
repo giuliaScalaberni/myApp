@@ -1,0 +1,100 @@
+<button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+<h1>SpeedEntry Old Users</h1>
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchData">
+      </div>
+    </div>
+  </form>
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          <a href="" ng-click="sortType = 'nome'; sortReverse = !sortReverse">
+            Name
+            <span ng-show="sortType == 'nome' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'nome' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'email'; sortReverse = !sortReverse">
+          Email
+            <span ng-show="sortType == 'email' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'email' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'persistedId'; sortReverse = !sortReverse">
+          Personal Id
+            <span ng-show="sortType == 'persistedId' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'persistedId' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'groupId'; sortReverse = !sortReverse">
+          Group Id
+            <span ng-show="sortType == 'groupId' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'groupId' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="user in oldUsers | orderBy:sortType:sortReverse | filter:searchData">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.persistedId }}</td>
+        <td>{{ user.groupId }}</td>
+        <td><button ng-click="moreInfos(user.persistedId)" class="btn btn-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true" id="{{user.persistedId}}"></span></button></td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <div id="modalInfos" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Presences {{id}}</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <a href="" ng-click="sortTypeOld = 'data_ora'; sortReverseOld = !sortReverseOld">
+                      Date time
+                      <span ng-show="sortTypeOld == 'data_ora' && !sortReverseOld" class="glyphicon glyphicon-chevron-down"></span>
+                      <span ng-show="sortTypeOld == 'data_ora' && sortReverseOld" class="glyphicon glyphicon-chevron-up"></span>
+                    </a>
+                  </td>
+                  <td>
+                    <a href="" ng-click="sortTypeOld = 'azione'; sortReverseOld = !sortReverseOld">
+                    Action
+                      <span ng-show="sortTypeOld == 'azione' && !sortReverseOld" class="glyphicon glyphicon-chevron-down"></span>
+                      <span ng-show="sortTypeOld == 'azione' && sortReverseOld" class="glyphicon glyphicon-chevron-up"></span>
+                    </a>
+                  </td>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr ng-repeat="user in users | orderBy:sortTypeOld:sortReverseOld">
+                  <td>{{ user.data_ora }}</td>
+                  <td>{{ user.azione }}</td>
+                </tr>
+              </tbody>
+
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>

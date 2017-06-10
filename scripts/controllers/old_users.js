@@ -33,8 +33,30 @@ oldUsersController.controller('oldUsersCtrl', ['$scope','$rootScope', '$http', '
     window.history.back();
     $rootScope.groupId="";
   };
+
   $scope.moreInfos=function(pid){
       $('#modalInfos').modal('show');
+      $scope.sortTypeOld     = 'data_ora';
+      $scope.sortReverseOld  = false;
+      $scope.searchDataOld   = '';
+      var self = this;
+      $scope.id=pid;
+        var json = $.param({personId: pid});
+      $http({
+        method : "POST",
+        url : 'http://localhost:80/getPresence.php',
+        data: json,
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+      }).then(function mySucces(ris) {
+
+
+      $scope.users=ris.data;
+
+
+      }), function myError(r) {
+          alert("Error: "+r);
+      };
 
     };
 

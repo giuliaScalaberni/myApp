@@ -9,6 +9,8 @@
  */
     var loginController = angular.module('loginController', []);
 loginController.controller('loginCtrl', function($scope,$rootScope, $http, $route, $location) {
+
+
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
@@ -17,7 +19,14 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
     console.log('Email: ' + profile.getEmail());
     $rootScope.mail=profile.getEmail();
     $rootScope.image=profile.getImageUrl();
+    alert($rootScope.mail);
     $scope.login=true;
+    if (profile.getEmail()=="scalaberni.giulia@gmail.com")
+
+      alert("giulia");
+    else {
+      alert("no admin");
+    }
   };
 
    $scope.signOut=function() {
@@ -30,9 +39,6 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
      });
    };
 
-   if ($rootScope.mail!=""){
-     alert($rootScope.mail);
-   }
   window.onSignIn = onSignIn;
 
   });

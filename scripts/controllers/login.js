@@ -33,7 +33,7 @@ window.location.href = "http://localhost:9000";}
      auth2.signOut().then(function () {
        console.log('User signed out.');
        $scope.login=false;
-       $rootScope.mail="";
+       $rootScope.email=undefined;
        $rootScope.image="";
      });
    };

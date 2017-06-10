@@ -36,6 +36,9 @@ angular.module('documentsApp')
 
 
       });
+      $scope.old=function(){
+        $location.path("/old-users");
+      }
 
       $scope.findPeople=function(id){
         $rootScope.groupId=id;

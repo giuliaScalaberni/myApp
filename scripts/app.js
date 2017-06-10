@@ -28,6 +28,7 @@
     'loginController',
     'angularSpinkit',
     'presencesController',
+    'oldUsersController',
     //'uploadSnap'
 
 
@@ -77,6 +78,10 @@
      .when('/presences', {
        templateUrl: 'views/presences.html',
        controller: 'presencesCtrl',
+     })
+     .when('/old-users', {
+       templateUrl: 'views/old-users.html',
+       controller: 'oldUsersCtrl',
      })
      .otherwise({
        redirectTo: '/'

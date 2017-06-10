@@ -79,6 +79,6 @@
        controller: 'presencesCtrl',
      })
      .otherwise({
-       redirectTo: '/'
+       redirectTo: '/login'
      });
    }]);

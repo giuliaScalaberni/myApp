@@ -19,20 +19,23 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
     console.log('Email: ' + profile.getEmail());
     $rootScope.email=profile.getEmail();
     $rootScope.image=profile.getImageUrl();
-    $scope.login=true;
+    $scope.admin=true;
     if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
-
-window.location.href = "http://localhost:9000";}
+  $rootScope.admin=true;
+window.location.href = "http://localhost:9000";
+}
     else {
+      $rootScope.admin=false;
     window.location.href = "http://localhost:9000/#!/photos"
     }
+
   };
 
    $scope.signOut=function() {
      var auth2 = gapi.auth2.getAuthInstance();
      auth2.signOut().then(function () {
        console.log('User signed out.');
-       $scope.login=false;
+       $rootScope.login=false;
        $rootScope.email=undefined;
        $rootScope.image="";
      });

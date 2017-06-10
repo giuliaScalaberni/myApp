@@ -10,6 +10,16 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
     if ($rootScope.email==undefined){
       $location.path('/');
     }
+    var email = $.param({email: $rootScope.email});
+    $http({
+      method : "POST",
+      url : 'http://localhost:80/getUserInfo.php',
+      data: email,
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+    }).then(function mySucces(ris) {
+      $scope.ris=ris.data[0];
+    });
     $scope.goBack=function(){
       window.history.back();
     };

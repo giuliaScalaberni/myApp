@@ -22,8 +22,6 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
     $scope.login=true;
     if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
 
-
-
 window.location.href = "http://localhost:9000";}
     else {
     window.location.href = "http://localhost:9000/#!/photos"

@@ -1,5 +1,6 @@
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-<h1>SpeedEntry Old Users</h1>
+<h1><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-exclamation-sign"></span> SpeedEntry Old Users</h1>
+<br>
 <form>
     <div class="form-group">
       <div class="input-group">
@@ -50,7 +51,7 @@
         <td>{{ user.email }}</td>
         <td>{{ user.persistedId }}</td>
         <td>{{ user.groupId }}</td>
-        <td><button ng-click="moreInfos(user.persistedId)" class="btn btn-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true" id="{{user.persistedId}}"></span></button></td>
+        <td><button ng-click="moreInfos(user.persistedId)" class="btn btn-default"><span class="glyphicon glyphicon-calendar" aria-hidden="true" id="{{user.persistedId}}"></span></button></td>
       </tr>
     </tbody>
 

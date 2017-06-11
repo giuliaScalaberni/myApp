@@ -37,12 +37,18 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
             }).then(function mySucces(ris) {
-            // alert(ris);
+             if (angular.equals(ris.data,"ok")){
+               $rootScope.userId=response.data.personId;
+               $location.path('/get-person');
+             }
+             else{
+               alert("Email has already used!");
+
+             }
 
               })
 
-            $rootScope.userId=response.data.personId;
-            $location.path('/get-person');
+
           },
           function myError(response) {
             alert(response.data.error.code+": "+response.data.error.message);

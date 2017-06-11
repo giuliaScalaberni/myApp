@@ -44,6 +44,8 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
         $rootScope.email=undefined;
         $rootScope.image="";
         $rootScope.emailAlert=false;
+
+        $location.path("/login");
       })};
 
     $scope.goBack=function(){

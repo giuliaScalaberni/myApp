@@ -20,7 +20,11 @@ function onSignIn(googleUser) {
     });
   }
 </script-->
-
+<div ng-show="emailAlert" class="alert alert-danger alert-dismissable">
+  <button type='button' class='close' data-dismiss='alert'>X</button>
+  <strong>ATTENTION!</strong> {{email}} is not registered. <br>
+  Please contact the admin (scalaberni.giulia@gmai.com)
+</div>
    <div class="jumbotron">
     <h2>Hello SpeedEntry user!</h2>
 
@@ -31,5 +35,4 @@ function onSignIn(googleUser) {
       Another work day is going to start!
     </p>
   </div>
-
     <a href="#" ng-click="signOut()" >Sign out</a>

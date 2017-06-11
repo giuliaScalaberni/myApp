@@ -9,6 +9,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
   function($scope, $rootScope, $routeParams, $location,$http, $upload, cloudinary) {
     if ($rootScope.email==undefined){
       $location.path('/login');
+      
     }
     var email = $.param({email: $rootScope.email});
     $http({
@@ -23,8 +24,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
         auth2.signOut().then(function () {
           console.log('User signed out.');
           $rootScope.login=false;
-          $rootScope.email=undefined;
-          $rootScope.image="";
+          $rootScope.emailAlert=true;
           $location.path("/login");
       });
     }

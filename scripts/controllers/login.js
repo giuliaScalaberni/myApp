@@ -10,7 +10,9 @@
     var loginController = angular.module('loginController', []);
 loginController.controller('loginCtrl', function($scope,$rootScope, $http, $route, $location) {
 
-
+  if ($rootScope.email==undefined){
+    $rootScope.emailAlert=false;
+  };
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());

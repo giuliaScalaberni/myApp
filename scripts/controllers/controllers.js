@@ -18,9 +18,22 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
     }).then(function mySucces(ris) {
-      $rootScope.ris=ris.data[0];
-      $rootScope.userId=$scope.ris.persistedId;
-      $rootScope.groupId=$scope.ris.groupId;
+      if (ris.data.length==0){
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          $rootScope.login=false;
+          $rootScope.email=undefined;
+          $rootScope.image="";
+          $location.path("/login");
+      });
+    }
+    else {
+        $rootScope.ris=ris.data[0];
+        $rootScope.userId=$scope.ris.persistedId;
+        $rootScope.groupId=$scope.ris.groupId;
+      }
+
     });
     $scope.goBack=function(){
       window.history.back();

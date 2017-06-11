@@ -10,7 +10,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
 
 
     if ($rootScope.email==undefined){
-      $location.path('/login');
+      $location.path('/');
     };
     var email = $.param({email: $rootScope.email});
     $http({
@@ -26,7 +26,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
           console.log('User signed out.');
           $rootScope.login=false;
           $rootScope.emailAlert=true;
-          $location.path("/login");
+          $location.path("/");
       });
     }
     else {

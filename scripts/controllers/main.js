@@ -36,6 +36,9 @@ angular.module('documentsApp')
 
 
       });
+      $scope.old=function(){
+        $location.path("/old-users");
+      }
 
       $scope.signOut=function() {
         var auth2 = gapi.auth2.getAuthInstance();

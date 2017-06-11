@@ -26,7 +26,7 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
 
     if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
   $rootScope.admin=true;
-window.location.href = "http://localhost:9000";
+window.location.href = "http://localhost:9000/#!/main";
 }
     else {
       $rootScope.admin=false;

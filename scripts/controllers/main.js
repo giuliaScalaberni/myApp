@@ -16,6 +16,7 @@ angular.module('documentsApp')
     $scope.loadPerson=1;
     $rootScope.groupId="";
     $rootScope.datas="";
+
     if($rootScope.admin==false){
       $location.path("/photos");
     };
@@ -130,7 +131,7 @@ angular.module('documentsApp')
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
             }).then(function mySucces() {
-                $location.path("/");
+                $location.path("/main");
               }), function myError(r) {
                   alert("Error: "+r);
               };

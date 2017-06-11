@@ -6,7 +6,7 @@ presencesController.controller('presencesCtrl', ['$scope','$rootScope', '$http',
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
 
-    $location.path("/");
+    $location.path("/main");
   }
   $scope.goBack=function(){
     window.history.back();

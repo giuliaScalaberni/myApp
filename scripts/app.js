@@ -47,7 +47,7 @@
        templateUrl: 'views/photo-upload.html',
        controller: 'photoUploadCtrl',
 
-     }).when('/', {
+     }).when('/main', {
        templateUrl: 'views/main.html',
        controller: 'MainCtrl',
        controllerAs: 'main'
@@ -71,7 +71,7 @@
        templateUrl: 'views/add-person.html',
        controller: 'addPersonCtrl',
      })
-     .when('/login', {
+     .when('/', {
        templateUrl: 'views/login.html',
        controller: 'loginCtrl',
      })

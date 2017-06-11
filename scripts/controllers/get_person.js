@@ -14,7 +14,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
   if ( $rootScope.groupId == undefined || $rootScope.userId == undefined)
   {
 
-    $location.path("/");
+    $location.path("/main");
   }
   $scope.getDatas=1;
 
@@ -76,7 +76,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
 
       }, function myError(response) {
           //alert("No parameters to get a response");
-          $location.path("/");
+          $location.path("/main");
       });
 
       $scope.getPresents=function(){
@@ -125,7 +125,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
 
                     }).then(function mySucces() {
 
-                        //$location.path("/");
+                        //$location.path("/main");
                         $http({
                           method : "POST",
                           url : 'http://localhost:80/getSnaps.php',
@@ -164,7 +164,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 
                  }).then(function mySucces() {
-                     $location.path("/");
+                     $location.path("/main");
 
                    }), function myError(r) {
                        alert("Error: "+r);

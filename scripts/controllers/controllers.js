@@ -36,6 +36,16 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       }
 
     });
+    $scope.signOut=function() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+        $rootScope.login=false;
+        $rootScope.email=undefined;
+        $rootScope.image="";
+        $rootScope.emailAlert=false;
+      })};
+
     $scope.goBack=function(){
       window.history.back();
     };

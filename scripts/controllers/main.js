@@ -16,8 +16,8 @@ angular.module('documentsApp')
     $scope.loadPerson=1;
     $rootScope.groupId="";
     $rootScope.datas="";
-    if ($rootScope.email==undefined){
-      $location.path('/login');
+    if($rootScope.admin==false){
+      $location.path("/photos");
     };
     $http({
           method : "GET",

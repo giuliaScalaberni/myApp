@@ -10,9 +10,9 @@
     var loginController = angular.module('loginController', []);
 loginController.controller('loginCtrl', function($scope,$rootScope, $http, $route, $location) {
 
-  if ($rootScope.email==undefined){
+  /*if ($rootScope.email==undefined){
     $rootScope.emailAlert=false;
-  };
+  };*/
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
@@ -22,6 +22,8 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
     $rootScope.email=profile.getEmail();
     $rootScope.image=profile.getImageUrl();
     $scope.admin=true;
+    $rootScope.emailAlert=false;
+    
     if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
   $rootScope.admin=true;
 window.location.href = "http://localhost:9000";

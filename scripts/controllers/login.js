@@ -13,6 +13,7 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
   /*if ($rootScope.email==undefined){
     $rootScope.emailAlert=false;
   };*/
+  $rootScope.admin=false;
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
@@ -21,9 +22,8 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
     console.log('Email: ' + profile.getEmail());
     $rootScope.email=profile.getEmail();
     $rootScope.image=profile.getImageUrl();
-    $scope.admin=true;
     $rootScope.emailAlert=false;
-    
+
     if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
   $rootScope.admin=true;
 window.location.href = "http://localhost:9000";
@@ -42,6 +42,7 @@ window.location.href = "http://localhost:9000";
        $rootScope.login=false;
        $rootScope.email=undefined;
        $rootScope.image="";
+       $rootScope.emailAlert=false;
      });
    };
 

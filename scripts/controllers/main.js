@@ -44,6 +44,7 @@ angular.module('documentsApp')
           $rootScope.login=false;
           $rootScope.email=undefined;
           $rootScope.image="";
+          $scope.admin=false;
           $location.path("/login");
         });
       };

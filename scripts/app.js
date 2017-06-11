@@ -84,6 +84,6 @@
        controller: 'oldUsersCtrl',
      })
      .otherwise({
-       redirectTo: '/login'
+       redirectTo: '/'
      });
    }]);

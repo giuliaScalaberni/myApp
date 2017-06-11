@@ -10,7 +10,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
 
 
     if ($rootScope.email==undefined){
-      $location.path('/login');
+      $location.path('/');
     };
     var email = $.param({email: $rootScope.email});
     $http({
@@ -26,7 +26,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
           console.log('User signed out.');
           $rootScope.login=false;
           $rootScope.emailAlert=true;
-          $location.path("/login");
+          $location.path("/");
       });
     }
     else {
@@ -36,6 +36,18 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       }
 
     });
+    $scope.signOut=function() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+        $rootScope.login=false;
+        $rootScope.email=undefined;
+        $rootScope.image="";
+        $rootScope.emailAlert=false;
+
+        $location.path("/login");
+      })};
+
     $scope.goBack=function(){
       window.history.back();
     };

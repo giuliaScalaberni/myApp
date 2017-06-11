@@ -1,8 +1,21 @@
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+  <meta name="google-signin-client_id" content="354313137561-68rl4vjo8fgvbm0qdmnlsqq32cc32kkn.apps.googleusercontent.com"></meta>
+
 <div id="direct_upload"    ng-model="f"    ng-multiple="true">
 
   <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
     <h1>SpeedEntry Verify</h1>
-    <h3><u>User</u> {{name}}</h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4><i>Name</i>  {{ris.nome}}</h4>
+          <h4><i>Em@il</i>  {{email}}</h4>
+        <h4><i>Personal ID</i>  {{ris.persistedId}}</h4>
+        <h4><i>Group ID</i>  {{ris.groupId}}</h4>
+      </div>
+    </div>
+
     <hr>
     <div ng-init="action='In'">
     <label class="radio-inline">

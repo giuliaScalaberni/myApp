@@ -10,7 +10,7 @@
 
     var cognitiveController = angular.module('cognitiveController', []);
 cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http,$location) {
-  var params = {
+/*  var params = {
       // Request parameters
       "returnFaceId": "true",
       "returnFaceLandmarks": "false"
@@ -68,7 +68,7 @@ cognitiveController.controller('AboutCtrl', function($scope,$rootScope, $http,$l
     }}, function myError(response) {
       alert($scope.myWelcome = response.statusText );
       $location.path('/photos');
-    });
+    });*/
 
 
 

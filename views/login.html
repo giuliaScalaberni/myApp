@@ -3,7 +3,7 @@
 
     <meta name="google-signin-client_id" content="354313137561-68rl4vjo8fgvbm0qdmnlsqq32cc32kkn.apps.googleusercontent.com"></meta>
     <!--div class="g-signin2" data-onsuccess="onSignIn"></div-->
-<script>
+<!--script>
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -19,18 +19,20 @@ function onSignIn(googleUser) {
       console.log('User signed out.');
     });
   }
-</script>
-
+</script-->
+<div ng-show="emailAlert" class="alert alert-danger alert-dismissable">
+  <button type='button' class='close' data-dismiss='alert'>X</button>
+  <strong>{{email}} </strong> Operation not allowed! <br>
+  Please contact the admin (scalaberni.giulia@gmai.com)
+</div>
    <div class="jumbotron">
-    <h1>Hello Admin!</h1>
+    <h2>Hello SpeedEntry user!</h2>
 
 
       <div class="g-signin2"  align="center" data-onsuccess="onSignIn"></div>
     <p class="lead">
-
       <img src="images/image3.ico"><br>
       Another work day is going to start!
     </p>
   </div>
-
-    <a href="#" onclick="signOut()" >Sign out</a>
+    <a href="#" ng-click="signOut()" >Sign out</a>

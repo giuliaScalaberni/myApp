@@ -9,19 +9,43 @@
  */
     var loginController = angular.module('loginController', []);
 loginController.controller('loginCtrl', function($scope,$rootScope, $http, $route, $location) {
-  /*function onSignIn(googleUser) {
+
+  /*if ($rootScope.email==undefined){
+    $rootScope.emailAlert=false;
+  };*/
+  $rootScope.admin=false;
+  function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-  alert('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('ID: ' + profile.getId());
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    console.log('Email: ' + profile.getEmail());
+    $rootScope.email=profile.getEmail();
+    $rootScope.image=profile.getImageUrl();
+    $rootScope.emailAlert=false;
+
+    if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
+  $rootScope.admin=true;
+window.location.href = "http://localhost:9000";
+}
+    else {
+      $rootScope.admin=false;
+    window.location.href = "http://localhost:9000/#!/photos"
+    }
+
   };
-  $scope.signOut=function() {
+
+   $scope.signOut=function() {
      var auth2 = gapi.auth2.getAuthInstance();
      auth2.signOut().then(function () {
        console.log('User signed out.');
-       $route.reload();
+       $rootScope.login=false;
+       $rootScope.email=undefined;
+       $rootScope.image="";
+       $rootScope.emailAlert=false;
      });
-   };*/
+   };
+
+  window.onSignIn = onSignIn;
 
   });

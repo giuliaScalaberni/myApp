@@ -7,9 +7,35 @@ var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUplo
 photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', '$http','Upload', 'cloudinary',
  /* Uploading with Angular File Upload */
   function($scope, $rootScope, $routeParams, $location,$http, $upload, cloudinary) {
-    if ($rootScope.userId==undefined){
-      $location.path('/');
+
+
+    if ($rootScope.email==undefined){
+      $location.path('/login');
+    };
+    var email = $.param({email: $rootScope.email});
+    $http({
+      method : "POST",
+      url : 'http://localhost:80/getUserInfo.php',
+      data: email,
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+    }).then(function mySucces(ris) {
+      if (ris.data.length==0){
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          $rootScope.login=false;
+          $rootScope.emailAlert=true;
+          $location.path("/login");
+      });
     }
+    else {
+        $rootScope.ris=ris.data[0];
+        $rootScope.userId=$scope.ris.persistedId;
+        $rootScope.groupId=$scope.ris.groupId;
+      }
+
+    });
     $scope.goBack=function(){
       window.history.back();
     };

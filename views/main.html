@@ -8,14 +8,20 @@
 <div class="col-md-1">  <a href="#" ng-click="signOut()" >Sign out</a>
 </div>
 <div class="col-md-10">
-  <h1>SpeedEntry groups</h1>
+  <div class="row" align="center">
+    <div class="col-md-4"><button ng-show="button" class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group"><span class="glyphicon glyphicon-plus"></span></a></button>
+</div>
+        <div class="col-md-4">
+  <h2><span class="glyphicon glyphicon-briefcase"></span> SpeedEntry groups</h2>
+</div>
+<div class="col-md-4"></div>
+</div>
     <br>
   <div ng-show="warningInternet" class="alert alert-danger">
 
     <strong>Attention!</strong> The system is not working. Check your connection
   </div>
   <double-bounce-spinner ng-show="load"></double-bounce-spinner>
-  <button ng-show="button" class="btn btn-info" id="btnAddGroup"><a ng-href="/#!/add-group"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-briefcase"></span></a></button>
 
     <div class="list-group">
       <br>
@@ -26,9 +32,15 @@
 
 <double-bounce-spinner ng-show="loadPerson"></double-bounce-spinner>
       <div class="row" align="center">
-            <h2>{{groupId}}</h2>
-            <button ng-show="buttonPerson" class="btn btn-info" id="btnAddPerson"><a ng-href="/#!/add-person"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span></a></button>
+        <div class="col-md-4">
+          <button ng-show="buttonPerson" class="btn btn-info" id="btnAddPerson"><a ng-href="/#!/add-person"><span class="glyphicon glyphicon-plus"></a></button>
 </div>
+          <div class="col-md-4">
+
+            <h2 ng-hide="loadPerson"><span class="glyphicon glyphicon-user"></span> {{groupId}}</h2>
+            </div>
+              <div class="col-md-4"></div>
+      </div>
 
       <div class="list-group">
         <br>

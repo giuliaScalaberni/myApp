@@ -1,7 +1,11 @@
 <div id="direct_upload"
     ng-model="f"
     ng-multiple="true">
+    <div class="col-md-1">
     <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+  </div>
+  <br>
+  <div class="col-md-10">
     <h1>SpeedEntry Add Face</h1>
     <h3><u>User</u> {{name}}</h3>
     <br>
@@ -26,7 +30,7 @@
                       <!--SNAPPING -->
             <div class="form_controls">
                 <div class="upload_button_holder">
-                    <button  class="btn btn-success" ng-model="files"  ng-click="makeSnapshot()"   multiple title="upload" resetOnClick="true" >Snap</button>
+                    <button  class="btn btn-primary" ng-model="files"  ng-click="makeSnapshot()"   multiple title="upload" resetOnClick="true" >Snap</button>
 
                         <!--canvas id="snapshot" width="300" height="300"></canvas-->
                   </div>
@@ -44,7 +48,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Snapshot</h4>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></h4>
       </div>
       <div class="modal-body">
         <p>Sure to upload?</p>
@@ -60,3 +64,5 @@
 
 
 </div>
+</div>
+<div class="col-md-1"></div>

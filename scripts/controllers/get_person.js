@@ -134,7 +134,7 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
 
                         }).then(function mySucces(ris) {
                           $rootScope.datas=ris.data;
-                          if(ris.data.lenght==undefined)
+                          if(ris.data.length==0)
                             $scope.alert=1;
                         });
 

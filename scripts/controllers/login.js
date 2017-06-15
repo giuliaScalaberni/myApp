@@ -26,10 +26,12 @@ loginController.controller('loginCtrl', function($scope,$rootScope, $http, $rout
 
     if (profile.getEmail()=="scalaberni.giulia@gmail.com"){
   $rootScope.admin=true;
+    $rootScope.back=1;
 window.location.href = "http://localhost:9000/#!/main";
 }
     else {
       $rootScope.admin=false;
+        $rootScope.back=0;
     window.location.href = "http://localhost:9000/#!/photos"
     }
 
@@ -43,6 +45,7 @@ window.location.href = "http://localhost:9000/#!/main";
        $rootScope.email=undefined;
        $rootScope.image="";
        $rootScope.emailAlert=false;
+         $rootScope.back=0;
      });
    };
 

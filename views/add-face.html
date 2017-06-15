@@ -6,8 +6,8 @@
   </div>
   <br>
   <div class="col-md-10">
-    <h1>SpeedEntry Add Face</h1>
-    <h3><u>User</u> {{name}}</h3>
+    <h1> SpeedEntry Add Face</h1>
+    <h3><span class="glyphicon glyphicon-user"></span> {{name}}</h3>
     <br>
     <div ng-show="warningAlert" class="alert alert-danger alert-dismissable">
       <button type='button' class='close' data-dismiss='alert'>×</button>
@@ -30,7 +30,7 @@
                       <!--SNAPPING -->
             <div class="form_controls">
                 <div class="upload_button_holder">
-                    <button  class="btn btn-primary" ng-model="files"  ng-click="makeSnapshot()"   multiple title="upload" resetOnClick="true" >Snap</button>
+                    <button  class="btn btn-primary" ng-model="files"  ng-click="makeSnapshot()"   multiple title="upload" resetOnClick="true">Snap</button>
 
                         <!--canvas id="snapshot" width="300" height="300"></canvas-->
                   </div>

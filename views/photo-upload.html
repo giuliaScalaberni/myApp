@@ -5,9 +5,9 @@
 
 <div id="direct_upload"    ng-model="f"    ng-multiple="true">
 
-  <button ng-click="goBack()"  ng-show="admin"class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+  <button ng-click="goBack()"  ng-show="back" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
   <a href="#" ng-click="signOut()" >Sign out</a>
-    <h1>SpeedEntry Verify</h1>
+    <h1><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> SpeedEntry Verify</h1>
     <div class="panel panel-default">
       <div class="panel-body">
         <h4><i>Name</i>  {{ris.nome}}</h4>
@@ -18,6 +18,8 @@
     </div>
 
     <hr>
+    <h4>SpeedEntry Action</h4>
+    <br>
     <div ng-init="action='In'">
     <label class="radio-inline">
      <input type="radio" ng-model="action" ng-value="'In'" checked="checked"><span class="glyphicon glyphicon-log-in"></span> SpeedEntry

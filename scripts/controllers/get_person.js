@@ -86,12 +86,15 @@ getPersonController.controller('getPersonCtrl', function($scope,$rootScope, $htt
       $scope.trashPhoto=function(pid){
           $scope.id=pid;
           $scope.item="photo";
+          $scope.icon=1;
           $('#modalDelete').modal('show');
+
 
         };
         $scope.trashPerson=function(){
           $scope.id=$rootScope.userId;
           $scope.item="person";
+            $scope.icon=0;
           $('#modalDelete').modal('show');
 
         }

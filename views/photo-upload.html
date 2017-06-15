@@ -4,19 +4,24 @@
   <meta name="google-signin-client_id" content="354313137561-68rl4vjo8fgvbm0qdmnlsqq32cc32kkn.apps.googleusercontent.com"></meta>
 
 <div id="direct_upload"    ng-model="f"    ng-multiple="true">
-
+<div class="col-md-1">
   <button ng-click="goBack()"  ng-show="back" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-  <a href="#" ng-click="signOut()" >Sign out</a>
-    <h1><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> SpeedEntry Verify</h1>
-    <div class="panel panel-default">
-      <div class="panel-body">
+</div>
+<br>
+<div class="col-md-11">
+  <h1><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> SpeedEntry Verify</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-10">
         <h4><i>Name</i>  {{ris.nome}}</h4>
-          <h4><i>Em@il</i>  {{email}}</h4>
+        <h4><i>Em@il</i>  {{email}}</h4>
         <h4><i>Personal ID</i>  {{ris.persistedId}}</h4>
-        <h4><i>Group ID</i>  {{ris.groupId}}</h4>
       </div>
+      <div class="col-md-2">
+          <a href="#" ng-click="signOut()" >Sign out</a>
+        </div>
     </div>
-
+  </div>
     <hr>
     <h4>SpeedEntry Action</h4>
     <br>
@@ -37,6 +42,7 @@
      <input type="radio" ng-model="action" ng-value="'Pause OUT'"><span class="glyphicon glyphicon-play"></span> SpeedBreakEnd
       </label>
  </div>
+
    <hr>
     <br>
     <div ng-show="warningAlert" class="alert alert-danger alert-dismissable">
@@ -75,4 +81,5 @@
           </div>
         </div>
       </div>
+</div>
 </div>

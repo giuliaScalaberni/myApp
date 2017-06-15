@@ -41,14 +41,9 @@ addPersonController.controller('addPersonCtrl', function($scope,$rootScope, $htt
                $rootScope.userId=response.data.personId;
                $location.path('/get-person');
              }
-             else{
+             else
                alert("Email has already used!");
-
-             }
-
               })
-
-
           },
           function myError(response) {
             alert(response.data.error.code+": "+response.data.error.message);

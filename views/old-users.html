@@ -1,5 +1,10 @@
+<div class="col-md-1">
 <button ng-click="goBack()" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
-<h1>SpeedEntry Old Users</h1>
+</div>
+<br>
+<div class="col-md-11">
+<h1><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-exclamation-sign"></span> SpeedEntry Old Users</h1>
+<br>
 <form>
     <div class="form-group">
       <div class="input-group">
@@ -50,7 +55,7 @@
         <td>{{ user.email }}</td>
         <td>{{ user.persistedId }}</td>
         <td>{{ user.groupId }}</td>
-        <td><button ng-click="moreInfos(user.persistedId)" class="btn btn-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true" id="{{user.persistedId}}"></span></button></td>
+        <td><button ng-click="moreInfos(user.persistedId)" class="btn btn-default"><span class="glyphicon glyphicon-calendar" aria-hidden="true" id="{{user.persistedId}}"></span></button></td>
       </tr>
     </tbody>
 
@@ -60,7 +65,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Presences {{id}}</h4>
+          <h4 class="modal-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{id}}</h4>
         </div>
         <div class="modal-body">
           <table class="table table-bordered table-striped">
@@ -98,3 +103,5 @@
       </div>
     </div>
   </div>
+
+</div>

@@ -202,7 +202,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
 
 
                                   }, function myError(result) {
-                                    $scope.myWelcome = result.data.error.code+": "+result.data.error.message;
+                                    $scope.myWelcome = result.data.error.code+": "+result.data.error.message+ " Please contact the admin (scalaberni.giulia@gmail.com)";
                                       $scope.warningAlert=1;
                                       $scope.f.status = "";
                                       $scope.f.progress = 0;
